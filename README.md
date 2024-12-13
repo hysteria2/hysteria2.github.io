@@ -1,4 +1,4 @@
-# 12月11日|最高速度19.5M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐  更新时间 2024-12-11 10:10:44
+# 12月13日|最高速度20.7M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐  更新时间 2024-12-13 12:10:43
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://hysteria2.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,19 +9,19 @@
 
 ### Clash订阅链接
 
-- https://hysteria2.github.io/uploads/2024/12/0-20241211.yaml
-- https://hysteria2.github.io/uploads/2024/12/1-20241211.yaml
-- https://hysteria2.github.io/uploads/2024/12/2-20241211.yaml
-- https://hysteria2.github.io/uploads/2024/12/3-20241211.yaml
-- https://hysteria2.github.io/uploads/2024/12/4-20241211.yml
+- https://hysteria2.github.io/uploads/2024/12/0-20241213.yaml
+- https://hysteria2.github.io/uploads/2024/12/1-20241213.yaml
+- https://hysteria2.github.io/uploads/2024/12/2-20241213.yaml
+- https://hysteria2.github.io/uploads/2024/12/3-20241213.yaml
+- https://hysteria2.github.io/uploads/2024/12/4-20241213.yml
 
 ### V2ray订阅链接
 
-- https://hysteria2.github.io/uploads/2024/12/0-20241211.txt
-- https://hysteria2.github.io/uploads/2024/12/1-20241211.txt
-- https://hysteria2.github.io/uploads/2024/12/2-20241211.txt
-- https://hysteria2.github.io/uploads/2024/12/3-20241211.txt
-- https://hysteria2.github.io/uploads/2024/12/4-20241211.txt
+- https://hysteria2.github.io/uploads/2024/12/0-20241213.txt
+- https://hysteria2.github.io/uploads/2024/12/1-20241213.txt
+- https://hysteria2.github.io/uploads/2024/12/2-20241213.txt
+- https://hysteria2.github.io/uploads/2024/12/3-20241213.txt
+- https://hysteria2.github.io/uploads/2024/12/4-20241213.txt
 
 ## 更多clash节点订阅 ：
 
