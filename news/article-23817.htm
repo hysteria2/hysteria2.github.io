@@ -85,7 +85,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>高内聚、低耦合是软件设计中非常关键的概念。耦合度越低，两个模块之间相互影响越小，独立性越强，越容易维护和扩展。以下由耦合度由高向低做一说明，在软件设计中尽量降低模块之间的耦合度。</p> <ol> <li> <p><strong>内容耦合</strong>：举个例子，甲盖房子时，把自家的梁架在邻居乙的柱子上，邻居乙拆自家房子时，甲的房子倒了，甲的房子和乙的房子在内容耦合。我们将一个模块直接操作另外一个模块的数据，称为内容耦合。如：模块A有一个方法，直接读取模块B的一个数据变量c进行下一步操作，此时开发模块B的程序员将c变量删除或改名，则模块A直接崩溃。开发软件时绝不允许这种事情发生，但有些新手就能给你写出来，内容耦合也叫病态耦合。</p> </li> <li> <p><strong>公共耦合</strong>：多个模块共同引用一个全局对象称为公共耦合。这个模块无法确定那个模块给全局变量赋了值，降低了程序的可读性。软件开发中尽量少用全局公共变量，替代办法使用参数传递解决问题。如果非要使用可以使用松散公共耦合，即只有一个模块写入值，其它模块只是读取。</p> </li> <li> <p><strong>外部耦合</strong>：一组模块都访问同一全局简单变量而不是同一全局数据结构，而且不是通过参数表传递该全局变量的信息，则称之为外部耦合。外部耦合和公共耦合很像，区别就是一个是简单变量，一个是复杂数据结构。</p> </li> <li> <p><strong>控制耦合</strong>：一个模块通过接口向另一个模块传递一个控制信号，接受信号的模块根据信号值而进行适当的动作，这种耦合被称为控制耦合，即根据控制信号产生分支语句。如A类调用B类的方法，B类根据A类传入的参数值，决定执行那部分代码，则B依赖A，A、B两个类产生控制耦合关系。控制耦合一般使用多态的方式解决问题。</p> </li> <li> <p><strong>标记耦合</strong>：标记耦合指两个模块之间传递的是数据结构，如高级语言的数组名、记录名、文件名等这些名字即为标记，其实传递的是这个数据结构的地址。</p> </li> <li> <p><strong>数据耦合</strong>：两个模块之间有调用关系，传递的是简单数据值，是值传递。耦合度低，模块独立性好，模块间的影响最小。</p> </li> <li> <p><strong>非直接耦合</strong>：两个模块之间没有直接关系，它们之间的联系完全是通过主模块的控制和调用来实现的，这种耦合的模块独立性最强。</p> </li> </ol> <p>总结：<strong>尽量使用数据耦合，少用控制耦合和标记耦合，限制公共耦合和外部耦合的范围，完全不用内容耦合</strong></p> <p>参考：https://blog.csdn.net/tao475824827/article/details/104157419</p> </p></div> 			                <div class="clearfix"></div>
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>高内聚、低耦合是软件设计中非常关键的概念。耦合度越低，两个模块之间相互影响越小，独立性越强，越容易维护和扩展。以下由耦合度由高向低做一说明，在软件设计中尽量降低模块之间的耦合度。</p> <ol> <li> <p><strong>内容耦合</strong>：举个例子，甲盖房子时，把自家的梁架在邻居乙的柱子上，邻居乙拆自家房子时，甲的房子倒了，甲的房子和乙的房子在内容耦合。我们将一个模块直接操作另外一个模块的数据，称为内容耦合。如：模块A有一个方法，直接读取模块B的一个数据变量c进行下一步操作，此时开发模块B的程序员将c变量删除或改名，则模块A直接崩溃。开发软件时绝不允许这种事情发生，但有些新手就能给你写出来，内容耦合也叫病态耦合。</p> </li> <li> <p><strong>公共耦合</strong>：多个模块共同引用一个全局对象称为公共耦合。这个模块无法确定那个模块给全局变量赋了值，降低了程序的可读性。软件开发中尽量少用全局公共变量，替代办法使用参数传递解决问题。如果非要使用可以使用松散公共耦合，即只有一个模块写入值，其它模块只是读取。</p> </li> <li> <p><strong>外部耦合</strong>：一组模块都访问同一全局简单变量而不是同一全局数据结构，而且不是通过参数表传递该全局变量的信息，则称之为外部耦合。外部耦合和公共耦合很像，区别就是一个是简单变量，一个是复杂数据结构。</p> </li> <li> <p><strong>控制耦合</strong>：一个模块通过接口向另一个模块传递一个控制信号，接受信号的模块根据信号值而进行适当的动作，这种耦合被称为控制耦合，即根据控制信号产生分支语句。如A类调用B类的方法，B类根据A类传入的参数值，决定执行那部分代码，则B依赖A，A、B两个类产生控制耦合关系。控制耦合一般使用多态的方式解决问题。</p> </li> <li> <p><strong>标记耦合</strong>：标记耦合指两个模块之间传递的是数据结构，如高级语言的数组名、记录名、文件名等这些名字即为标记，其实传递的是这个数据结构的地址。</p> </li> <li> <p><strong>数据耦合</strong>：两个模块之间有调用关系，传递的是简单数据值，是值传递。耦合度低，模块独立性好，模块间的影响最小。</p> </li> <li> <p><strong>非直接耦合</strong>：两个模块之间没有直接关系，它们之间的联系完全是通过主模块的控制和调用来实现的，这种耦合的模块独立性最强。</p> </li> </ol> <p>总结：<strong>尽量使用数据耦合，少用控制耦合和标记耦合，限制公共耦合和外部耦合的范围，完全不用内容耦合</strong></p> <p>参考：https://blog.csdn.net/tao475824827/article/details/104157419</p> </p></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-23360.htm">新手养狗攻略（最全的新手养狗攻略）</a></p>
                                         <p>下一个：<a href="/news/article-23818.htm">猫主动爬你身上说明了什么不是主人（猫主动爬你身上说明了什么不是主人的表现）</a></p>
@@ -98,16 +99,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-24752.htm" title="人打的狂犬和动物打的狂犬一样吗 人打的狂犬和动物打的狂犬一样吗图片">人打的狂犬和动物打的狂犬一样吗 人打的狂犬和动物打的狂犬一样吗图片</a></li>
-                        <li class="py-2"><a href="/news/article-23360.htm" title="新手养狗攻略（最全的新手养狗攻略）">新手养狗攻略（最全的新手养狗攻略）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-17-shadowrocket-node.htm" title="9月17日|最高速度21.7M/S，2024最新Hysteria2免费节点高速订阅链接">9月17日|最高速度21.7M/S，2024最新Hysteria2免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-5-13-clash-node.htm" title="5月13日|最高速度19M/S，2024最新V2ray/Shadowrocket/SSR/Clash免费节点高速订阅链接">5月13日|最高速度19M/S，2024最新V2ray/Shadowrocket/SSR/Clash免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-7-free-node-subscribe-links.htm" title="11月7日|最高速度19.3M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">11月7日|最高速度19.3M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-14-free-subscribe-node.htm" title="10月14日|最高速度21M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月14日|最高速度21M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-3-free-v2ray-subscribe.htm" title="11月3日|最高速度19.3M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">11月3日|最高速度19.3M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-17-clash-node.htm" title="10月17日|最高速度18.1M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月17日|最高速度18.1M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-5-21-shadowrocket-node.htm" title="5月21日|最高速度18.1M/S，2024最新Clash/Shadowrocket/SSR/V2ray免费节点高速订阅链接">5月21日|最高速度18.1M/S，2024最新Clash/Shadowrocket/SSR/V2ray免费节点高速订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-6-26-free-v2ray.htm" title="6月26日|最高速度18.5M/S，2024最新Shadowrocket/SSR/V2ray/Clash免费节点高速订阅链接">6月26日|最高速度18.5M/S，2024最新Shadowrocket/SSR/V2ray/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-26-clash-v2ray-ss-ssr.htm" title="8月26日|最高速度22.3M/S，2024最新Hysteria2免费节点高速订阅链接">8月26日|最高速度22.3M/S，2024最新Hysteria2免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-5-28-free-subscribe-node.htm" title="5月28日|最高速度20.3M/S，2024最新V2ray/Shadowrocket/Clash/SSR免费节点高速订阅链接">5月28日|最高速度20.3M/S，2024最新V2ray/Shadowrocket/Clash/SSR免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-21-free-ssr-subscribe.htm" title="10月21日|最高速度19.7M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月21日|最高速度19.7M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-12-free-node-subscribe-links.htm" title="10月12日|最高速度21.9M/S，2024最新Hysteria2免费节点高速订阅链接">10月12日|最高速度21.9M/S，2024最新Hysteria2免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-29-free-node-subscribe-links.htm" title="9月29日|最高速度21.6M/S，2024最新Hysteria2免费节点高速订阅链接">9月29日|最高速度21.6M/S，2024最新Hysteria2免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-26617.htm" title="淮北宠物店（淮北宠物店招聘）">淮北宠物店（淮北宠物店招聘）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-free-v2ray-subscribe.htm" title="12月2日|最高速度19.1M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">12月2日|最高速度19.1M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-22444.htm" title="宠物上门回收广州电话（广州宠物收留）">宠物上门回收广州电话（广州宠物收留）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-5-free-v2ray.htm" title="9月5日|最高速度22.2M/S，2024最新Hysteria2免费节点高速订阅链接">9月5日|最高速度22.2M/S，2024最新Hysteria2免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-13-free-v2ray.htm" title="7月13日|最高速度18.5M/S，2024最新Hysteria2免费节点高速订阅链接">7月13日|最高速度18.5M/S，2024最新Hysteria2免费节点高速订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -119,7 +120,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">36</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -165,6 +166,15 @@
                     </ul>
                 </div> <!-- end of col -->
                 <div class="col-lg-6">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
                     <p>
                         <a href="/">Hysteria2官网订阅站</a> 版权所有 Powered by WordPress
                     </p>
