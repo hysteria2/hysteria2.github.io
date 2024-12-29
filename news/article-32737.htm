@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hysteria2.github.io/news/article-32737.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Webpage Title -->
+    <title>Linux  C++  实现一个简易版的ping （也就是ICMP协议）</title>
+        <meta name="description" content="想实现一个在没外网的时候就自动重启路由器的功能。 又不想用ping命令，因为在代码里调用system("ping"); 可能会比较耗时，得单开线程。于是找了个实现ICMP协议的代码。 参考：https" />
+        <link rel="icon" href="/assets/website/img/hysteria2/favicon.ico" type="image/x-icon"/>
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="/assets/website/css/hysteria2/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/css/hysteria2/fontawesome-all.min.css" rel="stylesheet">
+    <link href="/assets/website/css/hysteria2/swiper.css" rel="stylesheet">
+    <link href="/assets/website/css/hysteria2/styles.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0LQ0YHE09L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0LQ0YHE09L');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbarExample" data-page="detail">
+        <!-- Navigation -->
+    <nav id="navbarExample" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
+        <div class="container">
+            <!-- Image Logo -->
+                        <a class="navbar-brand logo-image" href="/">
+                Hysteria2节点
+            </a>
+                        <!-- Text Logo - Use this if you don't have a graphic logo -->
+            <!-- <a class="navbar-brand logo-text" href="index.html">Zinc</a> -->
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="#">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">联系</a>
+                    </li>
+                </ul>
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+    <!-- Header -->
+    <header class="ex-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <h1>Linux  C++  实现一个简易版的ping （也就是ICMP协议）</h1>
+                    <div class="section-title">
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </div>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+    <!-- Details 1 -->
+    <div id="details" class="basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				</h1> <p>想实现一个在没外网的时候就自动重启路由器的功能。</p> <p>又不想用ping命令，因为在代码里调用system("ping"); 可能会比较耗时，得单开线程。于是找了个实现ICMP协议的代码。</p> <p>参考：https://blog.csdn.net/qivan/article/details/7237051</p> </h1> <div class="cnblogs_code"> <pre>#include &lt;stdio.h&gt;<span style="color: rgba(0, 0, 0, 1)"> #include</span>&lt;sys/socket.h&gt;<span style="color: rgba(0, 0, 0, 1)"> #include</span>&lt;netinet/<span style="color: rgba(0, 0, 255, 1)">in</span>.h&gt;<span style="color: rgba(0, 0, 0, 1)"> #include</span>&lt;netinet/ip.h&gt;<span style="color: rgba(0, 0, 0, 1)"> #include</span>&lt;netinet/ip_icmp.h&gt;<span style="color: rgba(0, 0, 0, 1)"> #include</span>&lt;arpa/inet.h&gt;<span style="color: rgba(0, 0, 0, 1)"> #include</span>&lt;sys/types.h&gt;<span style="color: rgba(0, 0, 0, 1)"> #include</span>&lt;sys/time.h&gt;<span style="color: rgba(0, 0, 0, 1)"> #include</span>&lt;unistd.h&gt;<span style="color: rgba(0, 0, 0, 1)"> #include</span>&lt;netdb.h&gt;<span style="color: rgba(0, 0, 0, 1)"> #include</span>&lt;<span style="color: rgba(0, 0, 255, 1)">string</span>.h&gt;<span style="color: rgba(0, 0, 255, 1)">#define</span> PACKET_SIZE     4096<span style="color: rgba(0, 0, 255, 1)">#define</span> ERROR           0<span style="color: rgba(0, 0, 255, 1)">#define</span> SUCCESS         1<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">效验算法（百度下有注释，但是还是看不太明白）</span> unsigned<span style="color: rgba(0, 0, 255, 1)">short</span> cal_chksum(unsigned<span style="color: rgba(0, 0, 255, 1)">short</span> *addr,<span style="color: rgba(0, 0, 255, 1)">int</span><span style="color: rgba(0, 0, 0, 1)"> len) {</span><span style="color: rgba(0, 0, 255, 1)">int</span> nleft=<span style="color: rgba(0, 0, 0, 1)">len;</span><span style="color: rgba(0, 0, 255, 1)">int</span> sum=<span style="color: rgba(128, 0, 128, 1)">0</span><span style="color: rgba(0, 0, 0, 1)">;     unsigned</span><span style="color: rgba(0, 0, 255, 1)">short</span> *w=<span style="color: rgba(0, 0, 0, 1)">addr;     unsigned</span><span style="color: rgba(0, 0, 255, 1)">short</span> answer=<span style="color: rgba(128, 0, 128, 1)">0</span><span style="color: rgba(0, 0, 0, 1)">;</span><span style="color: rgba(0, 0, 255, 1)">while</span>(nleft &gt;<span style="color: rgba(128, 0, 128, 1)">1</span><span style="color: rgba(0, 0, 0, 1)">)     {         sum</span>+= *w++<span style="color: rgba(0, 0, 0, 1)">;         nleft</span>-=<span style="color: rgba(128, 0, 128, 1)">2</span><span style="color: rgba(0, 0, 0, 1)">;     }</span><span style="color: rgba(0, 0, 255, 1)">if</span>( nleft ==<span style="color: rgba(128, 0, 128, 1)">1</span><span style="color: rgba(0, 0, 0, 1)">)     {</span>*(unsigned<span style="color: rgba(0, 0, 255, 1)">char</span> *)(&amp;answer) = *(unsigned<span style="color: rgba(0, 0, 255, 1)">char</span> *<span style="color: rgba(0, 0, 0, 1)">)w;         sum</span>+=<span style="color: rgba(0, 0, 0, 1)"> answer;     }          sum</span>= (sum &gt;&gt;<span style="color: rgba(128, 0, 128, 1)">16</span>) + (sum &amp;<span style="color: rgba(128, 0, 128, 1)">0xffff</span><span style="color: rgba(0, 0, 0, 1)">);     sum</span>+= (sum &gt;&gt;<span style="color: rgba(128, 0, 128, 1)">16</span><span style="color: rgba(0, 0, 0, 1)">);     answer</span>= ~<span style="color: rgba(0, 0, 0, 1)">sum;</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)"> answer; }</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> Ping函数</span><span style="color: rgba(0, 0, 255, 1)">int</span> ping(<span style="color: rgba(0, 0, 255, 1)">char</span> *ips,<span style="color: rgba(0, 0, 255, 1)">int</span><span style="color: rgba(0, 0, 0, 1)"> timeout)   {</span><span style="color: rgba(0, 0, 255, 1)">struct</span> timeval *<span style="color: rgba(0, 0, 0, 1)">tval;</span><span style="color: rgba(0, 0, 255, 1)">int</span> maxfds =<span style="color: rgba(128, 0, 128, 1)">0</span><span style="color: rgba(0, 0, 0, 1)">;       fd_set readfds;</span><span style="color: rgba(0, 0, 255, 1)">struct</span><span style="color: rgba(0, 0, 0, 1)"> sockaddr_in addr;</span><span style="color: rgba(0, 0, 255, 1)">struct</span> sockaddr_in<span style="color: rgba(0, 0, 255, 1)">from</span><span style="color: rgba(0, 0, 0, 1)">;</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 设定Ip信息</span>     bzero(&amp;addr,<span style="color: rgba(0, 0, 255, 1)">sizeof</span><span style="color: rgba(0, 0, 0, 1)">(addr));       addr.sin_family</span>=<span style="color: rgba(0, 0, 0, 1)"> AF_INET;        addr.sin_addr.s_addr</span>=<span style="color: rgba(0, 0, 0, 1)"> inet_addr(ips);</span><span style="color: rgba(0, 0, 255, 1)">#if</span> 1<span style="color: rgba(0, 0, 255, 1)">int</span><span style="color: rgba(0, 0, 0, 1)"> sockfd;</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 取得socket  。  如果没加sudo 这里会报错</span>     sockfd =<span style="color: rgba(0, 0, 0, 1)"> socket(AF_INET, SOCK_RAW, IPPROTO_ICMP);</span><span style="color: rgba(0, 0, 255, 1)">if</span> (sockfd &lt;<span style="color: rgba(128, 0, 128, 1)">0</span><span style="color: rgba(0, 0, 0, 1)">)       {           printf(</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">ip:%s,socket error\n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">,ips);</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)"> ERROR;       }</span><span style="color: rgba(0, 0, 255, 1)">struct</span><span style="color: rgba(0, 0, 0, 1)"> timeval timeo;</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 设定TimeOut时间</span>     timeo.tv_sec = timeout /<span style="color: rgba(128, 0, 128, 1)">1000</span><span style="color: rgba(0, 0, 0, 1)">;       timeo.tv_usec</span>= timeout %<span style="color: rgba(128, 0, 128, 1)">1000</span><span style="color: rgba(0, 0, 0, 1)">;</span><span style="color: rgba(0, 0, 255, 1)">if</span> (setsockopt(sockfd, SOL_SOCKET, SO_SNDTIMEO, &amp;timeo,<span style="color: rgba(0, 0, 255, 1)">sizeof</span>(timeo)) == -<span style="color: rgba(128, 0, 128, 1)">1</span><span style="color: rgba(0, 0, 0, 1)">)       {           printf(</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">ip:%s,setsockopt error\n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">,ips);</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)"> ERROR;       }</span><span style="color: rgba(0, 0, 255, 1)">char</span><span style="color: rgba(0, 0, 0, 1)"> sendpacket[PACKET_SIZE];</span><span style="color: rgba(0, 0, 255, 1)">char</span><span style="color: rgba(0, 0, 0, 1)"> recvpacket[PACKET_SIZE];</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 设定Ping包</span>     memset(sendpacket,<span style="color: rgba(128, 0, 128, 1)">0</span>,<span style="color: rgba(0, 0, 255, 1)">sizeof</span><span style="color: rgba(0, 0, 0, 1)">(sendpacket));            pid_t pid;</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 取得PID，作为Ping的Sequence ID</span>     pid=<span style="color: rgba(0, 0, 0, 1)">getpid();</span><span style="color: rgba(0, 0, 255, 1)">struct</span> ip *<span style="color: rgba(0, 0, 0, 1)">iph;</span><span style="color: rgba(0, 0, 255, 1)">struct</span> icmp *<span style="color: rgba(0, 0, 0, 1)">icmp;               icmp</span>=(<span style="color: rgba(0, 0, 255, 1)">struct</span> icmp*<span style="color: rgba(0, 0, 0, 1)">)sendpacket;       icmp</span>-&gt;icmp_type=ICMP_ECHO;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">回显请求</span>     icmp-&gt;icmp_code=<span style="color: rgba(128, 0, 128, 1)">0</span><span style="color: rgba(0, 0, 0, 1)">;       icmp</span>-&gt;icmp_cksum=<span style="color: rgba(128, 0, 128, 1)">0</span><span style="color: rgba(0, 0, 0, 1)">;       icmp</span>-&gt;icmp_seq=<span style="color: rgba(128, 0, 128, 1)">0</span><span style="color: rgba(0, 0, 0, 1)">;       icmp</span>-&gt;icmp_id=<span style="color: rgba(0, 0, 0, 1)">pid;      tval</span>= (<span style="color: rgba(0, 0, 255, 1)">struct</span> timeval *)icmp-&gt;<span style="color: rgba(0, 0, 0, 1)">icmp_data;       gettimeofday(tval,NULL);       icmp</span>-&gt;icmp_cksum=cal_chksum((unsigned<span style="color: rgba(0, 0, 255, 1)">short</span> *)icmp,<span style="color: rgba(0, 0, 255, 1)">sizeof</span>(<span style="color: rgba(0, 0, 255, 1)">struct</span> icmp));<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">校验</span><span style="color: rgba(0, 0, 255, 1)">int</span><span style="color: rgba(0, 0, 0, 1)"> n;</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 发包 。可以把这个发包挪到循环里面去。</span>     n = sendto(sockfd, (<span style="color: rgba(0, 0, 255, 1)">char</span> *)&amp;sendpacket,<span style="color: rgba(0, 0, 255, 1)">sizeof</span>(<span style="color: rgba(0, 0, 255, 1)">struct</span> icmp),<span style="color: rgba(128, 0, 128, 1)">0</span>, (<span style="color: rgba(0, 0, 255, 1)">struct</span> sockaddr *)&amp;addr,<span style="color: rgba(0, 0, 255, 1)">sizeof</span><span style="color: rgba(0, 0, 0, 1)">(addr));</span><span style="color: rgba(0, 0, 255, 1)">if</span> (n &lt;<span style="color: rgba(128, 0, 128, 1)">1</span><span style="color: rgba(0, 0, 0, 1)">)       {           printf(</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">ip:%s,sendto error\n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">,ips);</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)"> ERROR;       }</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 接受</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 由于可能接受到其他Ping的应答消息，所以这里要用循环</span><span style="color: rgba(0, 0, 255, 1)">while</span>(<span style="color: rgba(128, 0, 128, 1)">1</span><span style="color: rgba(0, 0, 0, 1)">)       {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 设定TimeOut时间，这次才是真正起作用的</span>         FD_ZERO(&amp;<span style="color: rgba(0, 0, 0, 1)">readfds);           FD_SET(sockfd,</span>&amp;<span style="color: rgba(0, 0, 0, 1)">readfds);           maxfds</span>= sockfd +<span style="color: rgba(128, 0, 128, 1)">1</span><span style="color: rgba(0, 0, 0, 1)">;           n</span>=<span style="color: rgba(0, 0, 255, 1)">select</span>(maxfds, &amp;readfds, NULL, NULL, &amp;<span style="color: rgba(0, 0, 0, 1)">timeo);</span><span style="color: rgba(0, 0, 255, 1)">if</span> (n &lt;=<span style="color: rgba(128, 0, 128, 1)">0</span><span style="color: rgba(0, 0, 0, 1)">)           {                       printf(</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">ip:%s,Time out error\n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">,ips);               close(sockfd);</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)"> ERROR;           }</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 接受</span>         memset(recvpacket,<span style="color: rgba(128, 0, 128, 1)">0</span>,<span style="color: rgba(0, 0, 255, 1)">sizeof</span><span style="color: rgba(0, 0, 0, 1)">(recvpacket));</span><span style="color: rgba(0, 0, 255, 1)">int</span> fromlen =<span style="color: rgba(0, 0, 255, 1)">sizeof</span>(<span style="color: rgba(0, 0, 255, 1)">from</span><span style="color: rgba(0, 0, 0, 1)">);           n</span>= recvfrom(sockfd, recvpacket,<span style="color: rgba(0, 0, 255, 1)">sizeof</span>(recvpacket),<span style="color: rgba(128, 0, 128, 1)">0</span>, (<span style="color: rgba(0, 0, 255, 1)">struct</span> sockaddr *)&amp;<span style="color: rgba(0, 0, 255, 1)">from</span>, (socklen_t *)&amp;<span style="color: rgba(0, 0, 0, 1)">fromlen);       printf(</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">recvfrom Len:%d\n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">,n);</span><span style="color: rgba(0, 0, 255, 1)">if</span> (n &lt;<span style="color: rgba(128, 0, 128, 1)">1</span><span style="color: rgba(0, 0, 0, 1)">)      {</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)"> ERROR;           }</span><span style="color: rgba(0, 0, 255, 1)">char</span> *from_ip = (<span style="color: rgba(0, 0, 255, 1)">char</span> *)inet_ntoa(<span style="color: rgba(0, 0, 255, 1)">from</span><span style="color: rgba(0, 0, 0, 1)">.sin_addr);</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 判断是否是自己Ping的回复</span><span style="color: rgba(0, 0, 255, 1)">if</span> (strcmp(from_ip,ips) !=<span style="color: rgba(128, 0, 128, 1)">0</span><span style="color: rgba(0, 0, 0, 1)">)           {               printf(</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">NowPingip:%s Fromip:%s NowPingip is not same to Fromip,so ping wrong!\n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">,ips,from_ip);</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)"> ERROR;         }                    iph</span>= (<span style="color: rgba(0, 0, 255, 1)">struct</span> ip *<span style="color: rgba(0, 0, 0, 1)">)recvpacket;                    icmp</span>=(<span style="color: rgba(0, 0, 255, 1)">struct</span> icmp *)(recvpacket + (iph-&gt;ip_hl&lt;&lt;<span style="color: rgba(128, 0, 128, 1)">2</span><span style="color: rgba(0, 0, 0, 1)">));                    printf(</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">ip:%s,icmp-&gt;icmp_type:%d,icmp-&gt;icmp_id:%d\n</span><span style="color: rgba(128, 0, 0, 1)">"</span>,ips,icmp-&gt;icmp_type,icmp-&gt;<span style="color: rgba(0, 0, 0, 1)">icmp_id);</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 判断Ping回复包的状态</span><span style="color: rgba(0, 0, 255, 1)">if</span> (icmp-&gt;icmp_type == ICMP_ECHOREPLY &amp;&amp; icmp-&gt;icmp_id == pid)<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">ICMP_ECHOREPLY回显应答</span><span style="color: rgba(0, 0, 0, 1)">        {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 正常就退出循环</span>         printf(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">icmp succecss .............  \n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 0, 255, 1)">break</span><span style="color: rgba(0, 0, 0, 1)">;           }</span><span style="color: rgba(0, 0, 255, 1)">else</span><span style="color: rgba(0, 0, 0, 1)">           {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 否则继续等</span><span style="color: rgba(0, 0, 255, 1)">continue</span><span style="color: rgba(0, 0, 0, 1)">;           }       }</span><span style="color: rgba(0, 0, 255, 1)">#endif</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)"> SUCCESS; }</span><span style="color: rgba(0, 0, 255, 1)">int</span><span style="color: rgba(0, 0, 0, 1)"> main() {</span><span style="color: rgba(0, 0, 255, 1)">#if</span> 1<span style="color: rgba(0, 0, 255, 1)">char</span> cPing[<span style="color: rgba(128, 0, 128, 1)">16</span><span style="color: rgba(0, 0, 0, 1)">];     printf(</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Please input ping IP:</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">);     scanf(</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">%s</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">,cPing);</span><span style="color: rgba(0, 0, 255, 1)">#else</span><span style="color: rgba(0, 0, 255, 1)">char</span> *cPing =<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">192.168.1.200</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">;</span><span style="color: rgba(0, 0, 255, 1)">#endif</span><span style="color: rgba(0, 0, 255, 1)">if</span>(ping(cPing,<span style="color: rgba(128, 0, 128, 1)">10000</span><span style="color: rgba(0, 0, 0, 1)">))     {         printf(</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Ping succeed!\n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">);     }</span><span style="color: rgba(0, 0, 255, 1)">else</span><span style="color: rgba(0, 0, 0, 1)">     {         printf(</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">Ping wrong!\n</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">);     }</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(128, 0, 128, 1)">0</span><span style="color: rgba(0, 0, 0, 1)">;     }</span></pre> </div> </h1> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/5da809c6847ea3937caed0e459c6659b.jpg" alt="Linux  C++  实现一个简易版的ping （也就是ICMP协议）"></p> </h1> <p>0）直接用参考链接上的代码时编译不过，不知道是不是因为我用的是cpp，没太深究。</p> <p>1）实际使用的时候需要加上sudo，不然在创建套接字那个地方会报错。我还没想好怎么在代码里用sudo，（因为实际项目运行起来是不需要加sudo的）。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-32736.htm">Python生成迷宫</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-31-node-share-links.htm" title="10月31日|最高速度19.9M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月31日|最高速度19.9M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-30-clash-windows.htm" title="10月30日|最高速度20.3M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月30日|最高速度20.3M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-5-24-free-ssr-subscribe.htm" title="5月24日|最高速度21.2M/S，2024最新V2ray/Shadowrocket/SSR/Clash免费节点高速订阅链接">5月24日|最高速度21.2M/S，2024最新V2ray/Shadowrocket/SSR/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-6-free-subscribe-node.htm" title="12月6日|最高速度20.1M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">12月6日|最高速度20.1M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-5-22-free-v2ray.htm" title="5月22日|最高速度20.4M/S，2024最新V2ray/SSR/Shadowrocket/Clash免费节点高速订阅链接">5月22日|最高速度20.4M/S，2024最新V2ray/SSR/Shadowrocket/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-13-free-high-speed-nodes.htm" title="12月13日|最高速度22.9M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">12月13日|最高速度22.9M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-20614.htm" title="宠物店粮食一个月要多少斤呢 宠物店粮食一个月要多少斤呢">宠物店粮食一个月要多少斤呢 宠物店粮食一个月要多少斤呢</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-26-free-v2ray.htm" title="6月26日|最高速度18.5M/S，2024最新Shadowrocket/SSR/V2ray/Clash免费节点高速订阅链接">6月26日|最高速度18.5M/S，2024最新Shadowrocket/SSR/V2ray/Clash免费节点高速订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-24-node-share.htm" title="12月24日|最高速度19.1M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">12月24日|最高速度19.1M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-4-clash-node.htm" title="10月4日|最高速度18.1M/S，2024最新Hysteria2免费节点高速订阅链接">10月4日|最高速度18.1M/S，2024最新Hysteria2免费节点高速订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">87</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of details 1 -->
+    
+        <!-- Copyright -->
+    <div class="copyright bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul class="list-unstyled li-space-lg p-small">
+                        <li><a href="#">Article Details</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div> <!-- end of col -->
+                <div class="col-lg-6">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        <a href="/">Hysteria2官网订阅站</a> 版权所有 Powered by WordPress
+                    </p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright -->
+    <!-- end of copyright -->
+    <!-- Back To Top Button -->
+    <button onclick="topFunction()" id="myBtn">
+        <img href="/assets/website/img/hysteria2/up-arrow.png" alt="alternative">
+    </button>
+    <!-- end of back to top button -->
+    <!-- Scripts -->
+    <script src="/assets/website/js/frontend/hysteria2/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="/assets/website/js/frontend/hysteria2/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="/assets/website/js/frontend/hysteria2/purecounter.min.js"></script> <!-- Purecounter counter for statistics numbers -->
+    <script src="/assets/website/js/frontend/hysteria2/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+    <script src="/assets/website/js/frontend/hysteria2/scripts.js"></script> <!-- Custom scripts -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
