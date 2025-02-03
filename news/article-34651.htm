@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://hysteria2.github.io/news/article-34651.htm" />
@@ -9,6 +9,34 @@
     <title>SpringBoot重点详解&#8211;使用JPA操作数据库</title>
         <meta name="description" content="目录 JPA &amp; Spring Data JPA 配置Maven依赖 配置数据源和JPA 创建POJO实体 数据持久化 使用Spring Data JPA接口（方式一） CrudReposit" />
         <link rel="icon" href="/assets/website/img/hysteria2/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Hysteria2官网订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hysteria2.github.io/news/article-34651.htm" />
+    <meta property="og:site_name" content="Hysteria2官网订阅站" />
+    <meta property="og:title" content="SpringBoot重点详解&#8211;使用JPA操作数据库" />
+    <meta property="og:image" content="https://hysteria2.github.io/uploads/20240507/23733e8680ebc5d7e1d5b84b4716d8e3.webp" />
+        <meta property="og:release_date" content="2025-01-02T09:59:28" />
+    <meta property="og:updated_time" content="2025-01-02T09:59:28" />
+        <meta property="og:description" content="目录 JPA &amp; Spring Data JPA 配置Maven依赖 配置数据源和JPA 创建POJO实体 数据持久化 使用Spring Data JPA接口（方式一） CrudReposit" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SpringBoot重点详解&#8211;使用JPA操作数据库">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link href="/assets/website/css/hysteria2/bootstrap.min.css" rel="stylesheet">
@@ -99,16 +127,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-20158.htm" title="宠物粮加工厂加盟怎么样 宠物粮加工厂加盟怎么样啊">宠物粮加工厂加盟怎么样 宠物粮加工厂加盟怎么样啊</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-28-clash-windows.htm" title="10月28日|最高速度19.8M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月28日|最高速度19.8M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-2-clash-windows.htm" title="1月2日|最高速度20.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">1月2日|最高速度20.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-31-node-share-links.htm" title="10月31日|最高速度19.9M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月31日|最高速度19.9M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/news/article-32260.htm" title="Vue中的插槽">Vue中的插槽</a></li>
-                        <li class="py-2"><a href="/news/article-32261.htm" title="天旺宠物医院（天宠宠物医院电话）">天旺宠物医院（天宠宠物医院电话）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-28-free-clash.htm" title="12月28日|最高速度21.6M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">12月28日|最高速度21.6M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/news/article-31779.htm" title="益沣动物医院怎么样啊知乎（益沣动物医院怎么样啊知乎招聘）">益沣动物医院怎么样啊知乎（益沣动物医院怎么样啊知乎招聘）</a></li>
-                        <li class="py-2"><a href="/news/article-26158.htm" title="新手养猫入门必备攻略图片（新手养猫应该准备些什么）">新手养猫入门必备攻略图片（新手养猫应该准备些什么）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-9-free-clash.htm" title="12月9日|最高速度18M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">12月9日|最高速度18M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-1-free-node-subscribe-links.htm" title="2月1日|最高速度22.1M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">2月1日|最高速度22.1M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-29-clash-node.htm" title="1月29日|最高速度18.4M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">1月29日|最高速度18.4M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-22444.htm" title="宠物上门回收广州电话（广州宠物收留）">宠物上门回收广州电话（广州宠物收留）</a></li>
+                        <li class="py-2"><a href="/news/article-42981.htm" title="动物医院怎么用英语怎么说 动物医院用英语怎么说?">动物医院怎么用英语怎么说 动物医院用英语怎么说?</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-clash-node.htm" title="12月3日|最高速度22.9M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">12月3日|最高速度22.9M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-28479.htm" title="上海动物疫苗接种地 上海动物疫苗接种地点">上海动物疫苗接种地 上海动物疫苗接种地点</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-25-free-v2ray-subscribe.htm" title="1月25日|最高速度22.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">1月25日|最高速度22.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-49958.htm" title="国内动物疫苗生产企业有多少家企业上市（国内动物疫苗生产企业有多少家企业上市股票）">国内动物疫苗生产企业有多少家企业上市（国内动物疫苗生产企业有多少家企业上市股票）</a></li>
+                        <li class="py-2"><a href="/news/article-29662.htm" title="瑞派宠物医院待遇（瑞派宠物医院员工待遇）">瑞派宠物医院待遇（瑞派宠物医院员工待遇）</a></li>
+                        <li class="py-2"><a href="/news/article-41492.htm" title="宠物领养平台创业计划书（宠物领养网站的设计与实现）">宠物领养平台创业计划书（宠物领养网站的设计与实现）</a></li>
                     </ul>
     </div>
 </div>
@@ -120,16 +148,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
@@ -173,7 +201,7 @@
     <!-- end of copyright -->
     <!-- Back To Top Button -->
     <button onclick="topFunction()" id="myBtn">
-        <img href="/assets/website/img/hysteria2/up-arrow.png" alt="alternative">
+        <img src="/assets/website/img/hysteria2/up-arrow.png" alt="alternative">
     </button>
     <!-- end of back to top button -->
     <!-- Scripts -->

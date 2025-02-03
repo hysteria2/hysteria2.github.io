@@ -61,10 +61,10 @@
     <nav id="navbarExample" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
         <div class="container">
             <!-- Image Logo -->
-                        <a class="navbar-brand logo-image" href="/">
-                Hysteria2节点
-            </a>
-                        <!-- Text Logo - Use this if you don't have a graphic logo -->
+            <a class="navbar-brand logo-image" href="/">
+                            <span>Hysteria2</span>
+                        </a>
+            <!-- Text Logo - Use this if you don't have a graphic logo -->
             <!-- <a class="navbar-brand logo-text" href="index.html">Zinc</a> -->
             <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -117,6 +117,7 @@
                   				  				  				<div id="content_views" class="htmledit_views"> <p>我的Kafka有三个节点，启动kafka后进程过一段时间后会自己消失。解决问题思路如下：</p> <p>由于kafka依赖于zookeeper，启动后要去zookeeper中注册，</p> <pre class="has"><code>启动kafka时：先启动zookeeper，保证zookeeper服务正常后，后再启动Kafka。  关闭Kafka时：先关闭kafka，再关闭zookeeper。</code></pre> <p>保证启动和停止无误后，如果kafka启动后，kafka进程过一段时间后消失,解决思路如下：</p> <p><strong>1.删除Kafka的logs，注意这个logs的目录指的是你Kafka的server.properties配置文件</strong></p> <p><img fetchpriority="high" decoding="async" alt="" class="has" height="299" src="http://img.555519.xyz/uploads3/20220820/29f6ca0fcbb4b62bbb83f15883ccca5c.jpg"></p> <p><strong>2.进入zookeeper客户端删除brokerid</strong></p> <pre class="has"><code>/opt/module/zookeeper-3.4.10/bin/zkCli.sh</code></pre> <p><img decoding="async" alt="" class="has" height="193" src="http://img.555519.xyz/uploads3/20220820/8d3893f2e0afd4dcab63cad69e21a807.jpg"></p> <p>执行删除brokerid</p> <pre class="has"><code>[zk: localhost:2181(CONNECTED) 3] rmr /brokers</code></pre> <p><strong>3. 然后启动zookeeper，再启动Kafka就恢复正常</strong></p> </div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-48911.htm">原生JS实现一个好看计数器</a></p>
+                                        <p>下一个：<a href="/news/article-49437.htm">VUE项目解决Vant组件库样式修改不生效问题</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -126,16 +127,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-23360.htm" title="新手养狗攻略（最全的新手养狗攻略）">新手养狗攻略（最全的新手养狗攻略）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-11-free-v2ray.htm" title="12月11日|最高速度18.4M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">12月11日|最高速度18.4M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/news/article-21989.htm" title="Druid数据库连接 | Spring Boot 集成 Druid实现数据库连接和完善的SQL执行监控">Druid数据库连接 | Spring Boot 集成 Druid实现数据库连接和完善的SQL执行监控</a></li>
-                        <li class="py-2"><a href="/news/article-47918.htm" title="急售二手颗粒饲料机一台多少钱（二手颗粒饲料机饲料颗粒机）">急售二手颗粒饲料机一台多少钱（二手颗粒饲料机饲料颗粒机）</a></li>
-                        <li class="py-2"><a href="/news/article-46468.htm" title="广州猫狗领养中心地址电话（广州猫狗领养中心地址电话号码）">广州猫狗领养中心地址电话（广州猫狗领养中心地址电话号码）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-23-clash-node-daily-updates.htm" title="1月23日|最高速度21M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">1月23日|最高速度21M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-25-free-v2ray-subscribe.htm" title="1月25日|最高速度22.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">1月25日|最高速度22.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/news/article-23818.htm" title="猫主动爬你身上说明了什么不是主人（猫主动爬你身上说明了什么不是主人的表现）">猫主动爬你身上说明了什么不是主人（猫主动爬你身上说明了什么不是主人的表现）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-15-free-subscribe-node.htm" title="11月15日|最高速度21.5M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">11月15日|最高速度21.5M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-13-clash-node-daily-updates.htm" title="11月13日|最高速度21.3M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">11月13日|最高速度21.3M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-19-node-share-links.htm" title="1月19日|最高速度19.4M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">1月19日|最高速度19.4M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-23-free-clash-subscribe.htm" title="12月23日|最高速度22.6M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">12月23日|最高速度22.6M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-31779.htm" title="益沣动物医院怎么样啊知乎（益沣动物医院怎么样啊知乎招聘）">益沣动物医院怎么样啊知乎（益沣动物医院怎么样啊知乎招聘）</a></li>
+                        <li class="py-2"><a href="/news/article-37556.htm" title="宠物猫批发市场.有多少只猫卖（宠物猫批发市场在哪里?）">宠物猫批发市场.有多少只猫卖（宠物猫批发市场在哪里?）</a></li>
+                        <li class="py-2"><a href="/news/article-46467.htm" title="动物疫苗的作用是什么呢英文翻译（动物疫苗的作用是什么呢英文翻译成中文）">动物疫苗的作用是什么呢英文翻译（动物疫苗的作用是什么呢英文翻译成中文）</a></li>
+                        <li class="py-2"><a href="/news/article-29392.htm" title="宠物鸟店（宠物鸟专卖店）">宠物鸟店（宠物鸟专卖店）</a></li>
+                        <li class="py-2"><a href="/news/article-48912.htm" title="Kafka启动后进程过一段时间自己消失，问题解决">Kafka启动后进程过一段时间自己消失，问题解决</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-4-shadowrocket-node.htm" title="1月4日|最高速度20.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">1月4日|最高速度20.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-17-free-node-subscribe.htm" title="12月17日|最高速度22.2M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">12月17日|最高速度22.2M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-49958.htm" title="国内动物疫苗生产企业有多少家企业上市（国内动物疫苗生产企业有多少家企业上市股票）">国内动物疫苗生产企业有多少家企业上市（国内动物疫苗生产企业有多少家企业上市股票）</a></li>
                     </ul>
     </div>
 </div>
@@ -147,16 +148,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
