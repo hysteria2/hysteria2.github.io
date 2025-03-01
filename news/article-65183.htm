@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hysteria2.github.io/news/article-65183.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Webpage Title -->
+    <title>FreeRTOS实时操作系统的任务应用函数详解_操作系统</title>
+        <meta name="description" content="11.3.1使能函数宏  11.3.2定时初始化定时器代码  11.3.3定义配置定时器和获取定时时间宏  16.4.1存储一个整形数  16.4.2存储结构提 目录  			  目录  1.获取任务" />
+        <link rel="icon" href="/assets/website/img/hysteria2/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Hysteria2官网订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hysteria2.github.io/news/article-65183.htm" />
+    <meta property="og:site_name" content="Hysteria2官网订阅站" />
+    <meta property="og:title" content="FreeRTOS实时操作系统的任务应用函数详解_操作系统" />
+    <meta property="og:image" content="https://hysteria2.github.io/uploads/20240507/ad6ef8360716b22fc8526a2895fbfd68.webp" />
+        <meta property="og:release_date" content="2025-03-01T06:59:27" />
+    <meta property="og:updated_time" content="2025-03-01T06:59:27" />
+        <meta property="og:description" content="11.3.1使能函数宏  11.3.2定时初始化定时器代码  11.3.3定义配置定时器和获取定时时间宏  16.4.1存储一个整形数  16.4.2存储结构提 目录  			  目录  1.获取任务" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="FreeRTOS实时操作系统的任务应用函数详解_操作系统">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="/assets/website/css/hysteria2/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/css/hysteria2/fontawesome-all.min.css" rel="stylesheet">
+    <link href="/assets/website/css/hysteria2/swiper.css" rel="stylesheet">
+    <link href="/assets/website/css/hysteria2/styles.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0LQ0YHE09L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0LQ0YHE09L');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbarExample" data-page="detail">
+        <!-- Navigation -->
+    <nav id="navbarExample" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
+        <div class="container">
+            <!-- Image Logo -->
+            <a class="navbar-brand logo-image" href="/">
+                            <span>Hysteria2</span>
+                        </a>
+            <!-- Text Logo - Use this if you don't have a graphic logo -->
+            <!-- <a class="navbar-brand logo-text" href="index.html">Zinc</a> -->
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/client.htm">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                    </ul>
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+    <!-- Header -->
+    <header class="ex-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <h1>FreeRTOS实时操作系统的任务应用函数详解_操作系统</h1>
+                    <div class="section-title">
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </div>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+    <!-- Details 1 -->
+    <div id="details" class="basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				  			 <div id="log-box">  				<div id="catalog"><ul id="catalog-ul"> <li><i class="be be-arrowright"></i> <a href="#title-0" title="11.3.1使能函数宏">11.3.1使能函数宏</a></li> <li><i class="be be-arrowright"></i> <a href="#title-1" title="11.3.2定时初始化定时器代码">11.3.2定时初始化定时器代码</a></li> <li><i class="be be-arrowright"></i> <a href="#title-2" title="11.3.3定义配置定时器和获取定时时间宏">11.3.3定义配置定时器和获取定时时间宏</a></li> <li><i class="be be-arrowright"></i> <a href="#title-3" title="16.4.1存储一个整形数">16.4.1存储一个整形数</a></li> <li><i class="be be-arrowright"></i> <a href="#title-4" title="16.4.2存储结构提">16.4.2存储结构提</a></li> </ul><span class="log-zd"><span class="log-close"><a title="隐藏目录"><i class="be be-cross"></i><strong>目录</strong></a></span></span></div>  			</div> <div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">1.获取任务系统状态</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_0_0" rel="nofollow">1.1函数描述</a></li> <li><a href="#_lab2_0_1" rel="nofollow">1.2参数描述</a></li> <li><a href="#_lab2_0_2" rel="nofollow">1.3返回值</a></li> <li><a href="#_lab2_0_3" rel="nofollow">1.4用法举例</a></li> </ul> <li><a href="#_label1" rel="nofollow">2.获取当前任务句柄</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_1_4" rel="nofollow">2.1函数描述</a></li> <li><a href="#_lab2_1_5" rel="nofollow">2.2返回值</a></li> </ul> <li><a href="#_label2" rel="nofollow">3.获取空闲任务句柄</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_2_6" rel="nofollow">3.1函数描述</a></li> <li><a href="#_lab2_2_7" rel="nofollow">3.2返回值</a></li> </ul> <li><a href="#_label3" rel="nofollow">4.获取任务堆栈最大使用深度</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_3_8" rel="nofollow">4.1函数描述</a></li> <li><a href="#_lab2_3_9" rel="nofollow">4.2参数描述</a></li> <li><a href="#_lab2_3_10" rel="nofollow">4.3返回值</a></li> <li><a href="#_lab2_3_11" rel="nofollow">4.4用法举例</a></li> </ul> <li><a href="#_label4" rel="nofollow">5.获取任务状态</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_4_12" rel="nofollow">5.1函数描述</a></li> <li><a href="#_lab2_4_13" rel="nofollow">5.2参数描述</a></li> <li><a href="#_lab2_4_14" rel="nofollow">5.3返回值</a></li> </ul> <li><a href="#_label5" rel="nofollow">6.获取任务描述内容</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_5_15" rel="nofollow">6.1函数描述</a></li> <li><a href="#_lab2_5_16" rel="nofollow">6.2参数描述</a></li> <li><a href="#_lab2_5_17" rel="nofollow">6.3返回值</a></li> </ul> <li><a href="#_label6" rel="nofollow">7.获取系统节拍次数</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_6_18" rel="nofollow">7.1函数描述</a></li> <li><a href="#_lab2_6_19" rel="nofollow">7.2返回值</a></li> </ul> <li><a href="#_label7" rel="nofollow">8.获取调度器状态</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_7_20" rel="nofollow">8.1函数描述</a></li> <li><a href="#_lab2_7_21" rel="nofollow">8.2返回值</a></li> </ul> <li><a href="#_label8" rel="nofollow">9.获取任务总数</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_8_22" rel="nofollow">9.1函数描述</a></li> <li><a href="#_lab2_8_23" rel="nofollow">9.2返回值</a></li> </ul> <li><a href="#_label9" rel="nofollow">10.获取所有任务详情</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_9_24" rel="nofollow">10.1函数描述</a></li> <li><a href="#_lab2_9_25" rel="nofollow">10.2参数描述</a></li> </ul> <li><a href="#_label10" rel="nofollow">11.获取任务运行时间</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_10_26" rel="nofollow">11.1函数描述</a></li> <li><a href="#_lab2_10_27" rel="nofollow">11.2参数描述</a></li> <li><a href="#_lab2_10_28" rel="nofollow">11.3用法举例</a></li> <ul class="third_class_ul"> <li><a href="#_label3_10_28_0" rel="nofollow">11.3.1使能函数宏</a></li> <li><a href="#_label3_10_28_1" rel="nofollow">11.3.2定时初始化定时器代码</a></li> <li><a href="#_label3_10_28_2" rel="nofollow">11.3.3定义配置定时器和获取定时时间宏</a></li> </ul> </ul> <li><a href="#_label11" rel="nofollow">12.设置任务标签值</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_11_29" rel="nofollow">12.1函数描述</a></li> <ul class="third_class_ul"></ul> <li><a href="#_lab2_11_30" rel="nofollow">12.2参数描述</a></li> <ul class="third_class_ul"></ul> <li><a href="#_lab2_11_31" rel="nofollow">12.3用法举例</a></li> <ul class="third_class_ul"></ul> </ul> <li><a href="#_label12" rel="nofollow">13.获取任务标签值</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_12_32" rel="nofollow">13.1函数描述</a></li> <ul class="third_class_ul"></ul> <li><a href="#_lab2_12_33" rel="nofollow">13.2参数描述</a></li> <ul class="third_class_ul"></ul> <li><a href="#_lab2_12_34" rel="nofollow">13.3返回值</a></li> <ul class="third_class_ul"></ul> </ul> <li><a href="#_label13" rel="nofollow">14.执行任务的应用钩子函数</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_13_35" rel="nofollow">14.1函数描述</a></li> <ul class="third_class_ul"></ul> <li><a href="#_lab2_13_36" rel="nofollow">14.2参数描述</a></li> <ul class="third_class_ul"></ul> </ul> <li><a href="#_label14" rel="nofollow">15.设置线程本地存储指针</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_14_37" rel="nofollow">15.1函数描述</a></li> <ul class="third_class_ul"></ul> <li><a href="#_lab2_14_38" rel="nofollow">15.2参数描述</a></li> <ul class="third_class_ul"></ul> <li><a href="#_lab2_14_39" rel="nofollow">15.3用法举例</a></li> <ul class="third_class_ul"></ul> </ul> <li><a href="#_label15" rel="nofollow">16.读取线程本地存储指针</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_15_40" rel="nofollow">16.1函数描述</a></li> <ul class="third_class_ul"></ul> <li><a href="#_lab2_15_41" rel="nofollow">16.2参数描写</a></li> <ul class="third_class_ul"></ul> <li><a href="#_lab2_15_42" rel="nofollow">16.3返回值</a></li> <ul class="third_class_ul"></ul> <li><a href="#_lab2_15_43" rel="nofollow">16.4用法举例</a></li> <ul class="third_class_ul"> <li><a href="#_label3_15_43_3" rel="nofollow">16.4.1存储一个整形数</a></li> <li><a href="#_label3_15_43_4" rel="nofollow">16.4.2存储结构提</a></li> </ul> </ul> <li><a href="#_label16" rel="nofollow">17.设置超时状态</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_16_44" rel="nofollow">17.1函数描述</a></li> <ul class="third_class_ul"></ul> <li><a href="#_lab2_16_45" rel="nofollow">17.2参数描述</a></li> <ul class="third_class_ul"></ul> <li><a href="#_lab2_16_46" rel="nofollow">17.3用法举例</a></li> <ul class="third_class_ul"></ul> </ul> <li><a href="#_label17" rel="nofollow">18.超时检测</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_17_47" rel="nofollow">18.1函数描述</a></li> <ul class="third_class_ul"></ul> <li><a href="#_lab2_17_48" rel="nofollow">18.2参数描述</a></li> <ul class="third_class_ul"></ul> <li><a href="#_lab2_17_49" rel="nofollow">18.3返回值</a></li> <ul class="third_class_ul"></ul> <li><a href="#_lab2_17_50" rel="nofollow">18.4用法举例</a></li> <ul class="third_class_ul"></ul> </ul> </ul> </div> <p>任务应用函数是一组辅助类函数，一般用于调试信息输出、获取任务句柄、获取任务状态、操作任务标签值等等。</p> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>1.获取任务系统状态</h2> <p class="maodian"><a name="_lab2_0_0" rel="nofollow"></a></p> <h3>1.1函数描述</h3> <div class="ay1code"> <pre class="brush:cpp;">         UBaseType_t uxTaskGetSystemState(                         TaskStatus_t * constpxTaskStatusArray,                         const UBaseType_tuxArraySize,                         unsigned long * constpulTotalRunTime );</pre> </div> <p>该函数向TaskStatus_t结构体填充相关信息，系统中每一个任务的信息都可以填充到TaskStatus_t结构体数组中，数组大小由uxArraySize指定。结构体TaskStatus_t定义如下：</p> <div class="ay1code"> <pre class="brush:cpp;">typedef struct xTASK_STATUS  {     /* 任务句柄*/     TaskHandle_t xHandle;     /* 指针，指向任务名*/     const signed char *pcTaskName;     /*任务ID，是一个独一无二的数字*/     UBaseType_t xTaskNumber;     /*填充结构体时，任务当前的状态（运行、就绪、挂起等等）*/     eTaskState eCurrentState;     /*填充结构体时，任务运行（或继承）的优先级。*/     UBaseType_t uxCurrentPriority;     /* 当任务因继承而改变优先级时，该变量保存任务最初的优先级。仅当configUSE_MUTEXES定义为1有效。*/     UBaseType_t uxBasePriority;     /* 分配给任务的总运行时间。仅当宏configGENERATE_RUN_TIME_STATS为1时有效。*/     unsigned long ulRunTimeCounter;     /* 从任务创建起，堆栈剩余的最小数量，这个值越接近0，堆栈溢出的可能越大。 */     unsigned short usStackHighWaterMark;  }TaskStatus_t;</pre> </div> <p>注意，这个函数仅用来调试用，调用此函数会挂起所有任务，直到函数最后才恢复挂起的任务，因此任务可能被挂起很长时间。在文件FreeRTOSConfig.h中，宏configUSE_TRACE_FACILITY必须设置为1，此函数才有效。</p> <p class="maodian"><a name="_lab2_0_1" rel="nofollow"></a></p> <h3>1.2参数描述</h3> <p><code>pxTaskStatusArray</code>：指向TaskStatus_t类型的结构体数组。这个数组至少要包含1个元素。RTOS控制的任务数量可以使用API函数uxTaskGetNumberOfTasks()获取。</p> <p><code>uxArraySize</code>：参数pxTaskStatusArray指向的数组大小，也就是该数组的索引数目。</p> <p><code>pulTotalRunTime</code>：如果在文件FreeRTOSConfig.h中设置宏configGENERATE_RUN_TIME_STATS为1，则该函数将总运行时间写入*pulTotalRunTime中。pulTotalRunTime可以设置为NULL，表示忽略总运行时间。</p> <p class="maodian"><a name="_lab2_0_2" rel="nofollow"></a></p> <h3>1.3返回值</h3> <p>被填充的TaskStatus_t结构体数量。这个值应该等于通过调用API函数uxTaskGetNumberOfTasks()返回的值，但如果传递给uxArraySize参数的值太小，则返回0。</p> <p class="maodian"><a name="_lab2_0_3" rel="nofollow"></a></p> <h3>1.4用法举例</h3> <div class="ay1code"> <pre class="brush:cpp;">/*本例演示如是使用uxTaskGetSystemState()函数来获取运行时间信息，并将其转化为程序员更易识别的字符格式，这些转化后的字符保存到pcWriteBuffer中。*/  void vTaskGetRunTimeStats(signed char *pcWriteBuffer )  {     TaskStatus_t*pxTaskStatusArray;     volatileUBaseType_t uxArraySize, x;     unsignedlong ulTotalRunTime, ulStatsAsPercentage;      /* 防御性代码，确保字符串有合理的结束*/    *pcWriteBuffer = 0x00;      /* 获取任务总数目*/    uxArraySize = uxTaskGetNumberOfTasks ();      /*为每个任务的TaskStatus_t结构体分配内存，也可以静态的分配一个足够大的数组 */    pxTaskStatusArray = pvPortMalloc( uxArraySize * sizeof( TaskStatus_t ));      if(pxTaskStatusArray != NULL )     {        /*获取每个任务的状态信息 */       uxArraySize = uxTaskGetSystemState( pxTaskStatusArray, uxArraySize,&amp;ulTotalRunTime );         /* 百分比计算 */       ulTotalRunTime /= 100UL;        /* 避免除零错误 */        if(ulTotalRunTime &gt; 0 )        {           /* 将获得的每一个任务状态信息部分的转化为程序员容易识别的字符串格式*/          for( x = 0; x &lt; uxArraySize; x++ )           {             /* 计算任务运行时间与总运行时间的百分比。*/             ulStatsAsPercentage = pxTaskStatusArray[ x ].ulRunTimeCounter /ulTotalRunTime;             if( ulStatsAsPercentage &gt; 0UL )             {                sprintf( pcWriteBuffer, "%s\t\t%lu\t\t%lu%%\r\n",                                  pxTaskStatusArray[ x ].pcTaskName,                                  pxTaskStatusArray[ x ].ulRunTimeCounter,                                  ulStatsAsPercentage );             }             else             {                /* 任务运行时间不足总运行时间的1%*/                sprintf( pcWriteBuffer, "%s\t\t%lu\t\t&lt;1%%\r\n",                                  pxTaskStatusArray[ x ].pcTaskName,                                   pxTaskStatusArray[x ].ulRunTimeCounter );             }             pcWriteBuffer += strlen( ( char * ) pcWriteBuffer );           }        }        /* 释放之前申请的内存*/       vPortFree( pxTaskStatusArray );     }  }</pre> </div> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>2.获取当前任务句柄</h2> <p class="maodian"><a name="_lab2_1_4" rel="nofollow"></a></p> <h3>2.1函数描述</h3> <blockquote> <p>TaskHandle_t xTaskGetCurrentTaskHandle(void );</p> </blockquote> <p>在文件FreeRTOSConfig.h中，宏INCLUDE_xTaskGetCurrentTaskHandle必须设置为1，此函数才有效。</p> <p class="maodian"><a name="_lab2_1_5" rel="nofollow"></a></p> <h3>2.2返回值</h3> <p>返回当前任务（调用该函数的任务）的句柄。</p> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>3.获取空闲任务句柄</h2> <p class="maodian"><a name="_lab2_2_6" rel="nofollow"></a></p> <h3>3.1函数描述</h3> <blockquote> <p>TaskHandle_t xTaskGetIdleTaskHandle(void );</p> </blockquote> <p>在文件FreeRTOSConfig.h中，宏INCLUDE_xTaskGetIdleTaskHandle必须设置为1，此函数才有效。</p> <p class="maodian"><a name="_lab2_2_7" rel="nofollow"></a></p> <h3>3.2返回值</h3> <p>返回空闲任务句柄。空闲任务在RTOS调度器启动时自动创建。</p> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>4.获取任务堆栈最大使用深度</h2> <p class="maodian"><a name="_lab2_3_8" rel="nofollow"></a></p> <h3>4.1函数描述</h3> <blockquote> <p>UBaseType_t uxTaskGetStackHighWaterMark( TaskHandle_t xTask );</p> </blockquote> <p>任务的堆栈空间会随着任务执行以及中断处理而增长或缩小。该函数可以返回任务启动后的最小剩余堆栈空间。换句话说，可以间接估算出一个任务最多需要多少堆栈空间。在文件FreeRTOSConfig.h中，宏INCLUDE_uxTaskGetStackHighWaterMark 必须设置成1，此函数才有效。</p> <p class="maodian"><a name="_lab2_3_9" rel="nofollow"></a></p> <h3>4.2参数描述</h3> <p>xTask：任务句柄。NULL表示查看当前任务的堆栈使用情况。</p> <p class="maodian"><a name="_lab2_3_10" rel="nofollow"></a></p> <h3>4.3返回值</h3> <p>返回最小剩余堆栈空间，以字为单位。比如一个32为架构处理器，返回值为1表示有4字节堆栈空间没有使用过。如果返回值为0，则任务很可能已经发生了堆栈溢出。</p> <p class="maodian"><a name="_lab2_3_11" rel="nofollow"></a></p> <h3>4.4用法举例</h3> <div class="ay1code"> <pre class="brush:cpp;">     void vTask1( void * pvParameters )       {           UBaseType_tuxHighWaterMark;           /* 入口处检测一次 */           uxHighWaterMark =uxTaskGetStackHighWaterMark( NULL );              for( ;; )           {               /* 正常调用函数 */               vTaskDelay( 1000 );               /* 测量堆栈使用情况 */               uxHighWaterMark =uxTaskGetStackHighWaterMark( NULL );           }      }</pre> </div> <p class="maodian"><a name="_label4" rel="nofollow"></a></p> <h2>5.获取任务状态</h2> <p class="maodian"><a name="_lab2_4_12" rel="nofollow"></a></p> <h3>5.1函数描述</h3> <blockquote> <p>eTaskState eTaskGetState( TaskHandle_txTask );</p> </blockquote> <p>返回一个枚举类型的任务状态值。在文件FreeRTOSConfig.h中，宏INCLUDE_eTaskGetState必须设置为1，此函数才有效。</p> <p class="maodian"><a name="_lab2_4_13" rel="nofollow"></a></p> <h3>5.2参数描述</h3> <p>xTask：任务句柄</p> <p class="maodian"><a name="_lab2_4_14" rel="nofollow"></a></p> <h3>5.3返回值</h3> <p>下表列出返回值和对应的任务状态。</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220427/16312fe4ed2f68de3ab90e9c223cbd02.jpg"></p> <p class="maodian"><a name="_label5" rel="nofollow"></a></p> <h2>6.获取任务描述内容</h2> <p class="maodian"><a name="_lab2_5_15" rel="nofollow"></a></p> <h3>6.1函数描述</h3> <blockquote> <p>char * pcTaskGetTaskName( TaskHandle_txTaskToQuery );</p> </blockquote> <p>获取任务的描述内容，在文件FreeRTOSConfig.h中，宏INCLUDE_pcTaskGetTaskName必须设置成1，此函数才有效。</p> <p class="maodian"><a name="_lab2_5_16" rel="nofollow"></a></p> <h3>6.2参数描述</h3> <p>xTaskToQuery：任务的句柄。NULL表示获取当前任务的描述内容指针。</p> <p class="maodian"><a name="_lab2_5_17" rel="nofollow"></a></p> <h3>6.3返回值</h3> <p>一个指针，指向任务描述字符串。</p> <p class="maodian"><a name="_label6" rel="nofollow"></a></p> <h2>7.获取系统节拍次数</h2> <p class="maodian"><a name="_lab2_6_18" rel="nofollow"></a></p> <h3>7.1函数描述</h3> <blockquote> <p>volatile TickType_t xTaskGetTickCount(void );</p> </blockquote> <p>这个函数不能在ISR中调用。在ISR中用xTaskGetTickCountFromISR()，原型为volatileTickType_t xTaskGetTickCountFromISR( void )。</p> <p class="maodian"><a name="_lab2_6_19" rel="nofollow"></a></p> <h3>7.2返回值</h3> <p>返回从vTaskStartScheduler函数调用后的系统时钟节拍次数。</p> <p class="maodian"><a name="_label7" rel="nofollow"></a></p> <h2>8.获取调度器状态</h2> <p class="maodian"><a name="_lab2_7_20" rel="nofollow"></a></p> <h3>8.1函数描述</h3> <blockquote> <p>BaseType_t xTaskGetSchedulerState( void);</p> </blockquote> <p>获取调度器当前状态。在文件FreeRTOSConfig.h中，宏INCLUDE_xTaskGetSchedulerState或configUSE_TIMERS必须定义为1，此函数才有效。</p> <p class="maodian"><a name="_lab2_7_21" rel="nofollow"></a></p> <h3>8.2返回值</h3> <p>&amp;&amp;&amp;返回值是以下常量之一（定义在task.h）：taskSCHEDULER_NOT_STARTED（未启动）、taskSCHEDULER_RUNNING（正常运行）、taskSCHEDULER_SUSPENDED（挂起）。</p> <p class="maodian"><a name="_label8" rel="nofollow"></a></p> <h2>9.获取任务总数</h2> <p class="maodian"><a name="_lab2_8_22" rel="nofollow"></a></p> <h3>9.1函数描述</h3> <blockquote> <p>UBaseType_t uxTaskGetNumberOfTasks(void );</p> </blockquote> <p>&amp;&amp;&amp;获取RTOS内核当前管理的任务总数。包含所有就绪、阻塞和挂起状态的任务。对于一个删除的任务，如果它的堆栈空间还没有被空闲任务释放掉，则这个被删除的任务也含在计数值中。</p> <p class="maodian"><a name="_lab2_8_23" rel="nofollow"></a></p> <h3>9.2返回值</h3> <p>&amp;&amp;&amp;返回RTOS内核当前管理的任务总数。</p> <p class="maodian"><a name="_label9" rel="nofollow"></a></p> <h2>10.获取所有任务详情</h2> <p class="maodian"><a name="_lab2_9_24" rel="nofollow"></a></p> <h3>10.1函数描述</h3> <blockquote> <p>void vTaskList( char *pcWriteBuffer );</p> </blockquote> <p>&amp;&amp;&amp;将每个任务的状态、堆栈使用情况等以字符的形式保存到参数pcWriteBuffer指向的区域。vTaskList()函数调用usTaskGetSystemState()函数，然后将得到的信息格式化为程序员易读的字符形式。输出的内容例子如下图所示，图中State一栏中，B表示阻塞、R表示就绪、D表示删除（等待清除内存）、S表示挂起或阻塞。</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220427/df9b3c419e0648c7d74800ebcf7a5548.jpg"></p> <p>&amp;&amp;&amp;注意，调用这个函数会挂起所有任务，这一过程可能持续较长时间，因此本函数仅在调试时使用。在文件FreeRTOSConfig.h中，宏configUSE_TRACE_FACILITY和configUSE_STATS_FORMATTING_FUNCTIONS必须定义为1，此函数才有效。</p> <p class="maodian"><a name="_lab2_9_25" rel="nofollow"></a></p> <h3>10.2参数描述</h3> <p>pcWriteBuffer：任务的信息会写入这个缓冲区，为ASCII表单形式。这个缓冲区要足够大，以容纳生成的报告，每个任务大约需要40个字节。</p> <p class="maodian"><a name="_label10" rel="nofollow"></a></p> <h2>11.获取任务运行时间</h2> <p class="maodian"><a name="_lab2_10_26" rel="nofollow"></a></p> <h3>11.1函数描述</h3> <blockquote> <p>void vTaskGetRunTimeStats( char*pcWriteBuffer );</p> </blockquote> <p>这个函数用于统计每个任务的运行时间。要使用这个函数必须满足一些条件，那就是必须有一个用于时间统计的定时器或计数器，这个定时器或计数器的精度要至少大于10倍的系统节拍周期。这个定时器或计数器的配置以及获取定时时间是由两个宏定义实现的，这两个宏一般在文件FreeRTOSConfig.h中定义。配置定时器或计数器的宏为portCONFIGURE_TIMER_FOR_RUN_TIME_STATS()，获取定时时间的宏为portGET_RUN_TIME_COUNTER_VALUE。实现了这两个宏定义后，还必须在文件FreeRTOSConfig.h中将宏configGENERATE_RUN_TIME_STATS和configUSE_STATS_FORMATTING_FUNCTIONS设置为1，此API函数才有效。</p> <p>&amp;&amp;&amp;这个API函数调用usTaskGetSystemState()函数获取每个任务的状态信息，并把其中的运行时间格式化为程序员易读的字符形式，并将这些信息保存到参数pcWriteBuffer指向的区域。</p> <p>&amp;&amp;&amp;注意，调用这个函数会挂起所有任务，这一过程可能持续较长时间，因此本函数仅在调试时使用。</p> <p class="maodian"><a name="_lab2_10_27" rel="nofollow"></a></p> <h3>11.2参数描述</h3> <p>pcWriteBuffer：任务的运行时间信息会写入这个缓冲区，为ASCII表单形式。这个缓冲区要足够大，以容纳生成的报告，每个任务大约需要40个字节。</p> <p class="maodian"><a name="_lab2_10_28" rel="nofollow"></a></p> <h3>11.3用法举例</h3> <p>&amp;&amp;&amp;以lpc17xx系列为控制为例，我们使用定时器0来作为统计基准时钟。</p> <p class="maodian"><a name="_label3_10_28_0" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-0">11.3.1使能函数宏</h4> <p>&amp;&amp;&amp;在文件FreeRTOSConfig.h中，设置宏configGENERATE_RUN_TIME_STATS和configUSE_STATS_FORMATTING_FUNCTIONS为1，</p> <p class="maodian"><a name="_label3_10_28_1" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-1">11.3.2定时初始化定时器代码</h4> <div class="ay1code"> <pre class="brush:cpp;">void vConfigureTimerForRunTimeStats( void )  {      /* 使能定时器0的外设电源，配置外设时钟 */      PCONP |= 0x02UL;      PCLKSEL0 = (PCLKSEL0&amp; (~(0x3&lt;&lt;2))) | (0x01 &lt;&lt; 2);      /* 复位定时器 0 */      T0TCR = 0x02;      /* 作为计数器 */      T0CTCR = 0x00;      /* 预分频，设置合适的分辨率即可 */      T0PR =  ( configCPU_CLOCK_HZ / 10000UL ) - 1UL;      /* 启动计数器 */      T0TCR = 0x01;  }</pre> </div> <p class="maodian"><a name="_label3_10_28_2" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-2">11.3.3定义配置定时器和获取定时时间宏</h4> <p>&amp;&amp;&amp;在文件FreeRTOSConfig.h中，定义下列代码：</p> <div class="ay1code"> <pre class="brush:cpp;">extern void vConfigureTimerForRunTimeStats( void );  #define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() vConfigureTimerForRunTimeStats()  #defineportGET_RUN_TIME_COUNTER_VALUE() T0TC</pre> </div> <p class="maodian"><a name="_label11" rel="nofollow"></a></p> <h2>12.设置任务标签值</h2> <p class="maodian"><a name="_lab2_11_29" rel="nofollow"></a></p> <h3>12.1函数描述</h3> <div class="ay1code"> <pre class="brush:cpp;">       voidvTaskSetApplicationTaskTag( TaskHandle_t xTask,                          TaskHookFunction_tpxTagValue );</pre> </div> <p>&amp;&amp;&amp;可以给每个任务分配一个标签值。这个值一般用于应用程序，RTOS内核不会使用。在文件FreeRTOSConfig.h中，宏configUSE_APPLICATION_TASK_TAG必须设置为1，此函数才有效。</p> <p class="maodian"><a name="_lab2_11_30" rel="nofollow"></a></p> <h3>12.2参数描述</h3> <p>xTask：任务句柄。NULL表示当前任务。pxTagValue：要分配给任务的标签值。这是一个TaskHookFunction_t类型的函数指针，但也可以给任务标签分配任意的值。</p> <blockquote> <p>注：TaskHookFunction_t原型定义：typedef BaseType_t (*TaskHookFunction_t)(void * )</p> </blockquote> <p class="maodian"><a name="_lab2_11_31" rel="nofollow"></a></p> <h3>12.3用法举例</h3> <div class="ay1code"> <pre class="brush:cpp;">/* 在这个例子中，给任务设置一个整形标签值。例子中使用了RTOS跟踪钩子宏。*/  void vATask( void *pvParameters )  {    /* 为自己的标签分配一个整形值 */   vTaskSetApplicationTaskTag( NULL, ( void * ) 1 );    for( ;; )    {      /* 任务主体代码 */    }  }  /*****************************************************************************/  /*在这个任务中，给任务设置一个函数标签值。首先定义一个回调函数，这个函数必须声明为TaskHookFunction_t类型。 */  static BaseType_t prvExampleTaskHook( void * pvParameter )  {    /* 这里为用户定义代码 –可能是记录数据、更新任务状态值等。*/    return 0;  }  /* 将回调函数设置为任务的标签值。 */  void vAnotherTask( void *pvParameters )  {    /* 注册回调函数*/   vTaskSetApplicationTaskTag( NULL, prvExampleTaskHook );    for( ;; )    {       /* 任务主体代码 */    }  }  /* 每当任务切换时，会调用xTaskCallApplicationTaskHook 函数（见14.）。 */  #define traceTASK_SWITCHED_OUT() xTaskCallApplicationTaskHook(pxCurrentTCB,0 )</pre> </div> <p class="maodian"><a name="_label12" rel="nofollow"></a></p> <h2>13.获取任务标签值</h2> <p class="maodian"><a name="_lab2_12_32" rel="nofollow"></a></p> <h3>13.1函数描述</h3> <blockquote> <p>TaskHookFunction_txTaskGetApplicationTaskTag( TaskHandle_t xTask );</p> </blockquote> <p>返回分配给任务的标签值。程序员定义标签值，RTOS内核通常不会访问标签值。</p> <p>函数仅对高级用户使用。在文件FreeRTOSConfig.h中，宏configUSE_APPLICATION_TASK_TAG必须设置为1，此函数才有效。</p> <p class="maodian"><a name="_lab2_12_33" rel="nofollow"></a></p> <h3>13.2参数描述</h3> <p>xTask：任务句柄。NULL表示当前任务。</p> <p class="maodian"><a name="_lab2_12_34" rel="nofollow"></a></p> <h3>13.3返回值</h3> <p>返回指定任务的标签值。</p> <p class="maodian"><a name="_label13" rel="nofollow"></a></p> <h2>14.执行任务的应用钩子函数</h2> <p class="maodian"><a name="_lab2_13_35" rel="nofollow"></a></p> <h3>14.1函数描述</h3> <div class="ay1code"> <pre class="brush:cpp;">         BaseType_txTaskCallApplicationTaskHook(                                     TaskHandle_txTask,                                     void*pvParameter );</pre> </div> <p>可以为每个任务分配一个标签值，当这个值是一个TaskHookFunction_t类型函数指针时，相当于应用程序向任务注册了一个回调函数，而API函数xTaskCallApplicationTaskHook用来调用这个回调函数。</p> <p>一般这个函数配合RTOS跟踪钩子宏使用，见12.设置任务标签值一节的用法举例。</p> <p class="maodian"><a name="_lab2_13_36" rel="nofollow"></a></p> <h3>14.2参数描述</h3> <p>xTask：任务句柄。NULL表示当前任务。pvParameter：作为参数传递给应用钩子函数</p> <p class="maodian"><a name="_label14" rel="nofollow"></a></p> <h2>15.设置线程本地存储指针</h2> <p class="maodian"><a name="_lab2_14_37" rel="nofollow"></a></p> <h3>15.1函数描述</h3> <div class="ay1code"> <pre class="brush:cpp;">       void vTaskSetThreadLocalStoragePointer(TaskHandle_t xTaskToSet,                                         BaseType_t xIndex,                                          void*pvValue )</pre> </div> <p>此函数仅用于高级用户。</p> <p>线程本地存储允许应用程序在任务的控制块中存储一些值，每个任务都有自己独立的储存空间。</p> <p>比如，许多库函数都包含一个叫做errno的全局变量。某些库函数使用errno返回库函数错误信息，应用程序检查这个全局变量来确定发生了那些错误。在单线程程序中，将errno定义成全局变量是可以的，但是在多线程应用中，每个线程（任务）必须具有自己独有的errno值，否则，一个任务可能会读取到另一个任务的errno值。</p> <p>FreeRTOS提供了一个灵活的机制，使得应用程序可以使用线程本地存储指针来读写线程本地存储。在文件FreeRTOSConfig.h中，宏configNUM_THREAD_LOCAL_STORAGE_POINTERS指定每个任务线程本地存储指针数组的大小。API函数vTaskSetThreadLocalStoragePointer()用于向指针数组中写入值，API函数pvTaskGetThreadLocalStoragePointer()用于从指针数组中读取值。</p> <p class="maodian"><a name="_lab2_14_38" rel="nofollow"></a></p> <h3>15.2参数描述</h3> <p><code>xTaskToSet</code>：任务句柄。NULL表示当前任务。</p> <p><code>xIndex</code>：写入到线程本地存储数组的索引号，线程本笃存储数组的大小由宏configNUM_THREAD_LOCAL_STORAGE_POINTERS设定，该宏在文件FreeRTOSConfig.h中。</p> <p><code>pvValue</code>：写入到指定索引地址的数据值</p> <p class="maodian"><a name="_lab2_14_39" rel="nofollow"></a></p> <h3>15.3用法举例</h3> <p>&amp;&amp;参见16.获取线程本地存储指针一节。</p> <p class="maodian"><a name="_label15" rel="nofollow"></a></p> <h2>16.读取线程本地存储指针</h2> <p class="maodian"><a name="_lab2_15_40" rel="nofollow"></a></p> <h3>16.1函数描述</h3> <div class="ay1code"> <pre class="brush:cpp;">         void*pvTaskGetThreadLocalStoragePointer(                                   TaskHandle_txTaskToQuery,                                   BaseType_txIndex );</pre> </div> <p>此函数仅用于高级用户。从线程本地存储指针数组中读取值。更详细描述见15.设置线程本地存储指针一节。</p> <p class="maodian"><a name="_lab2_15_41" rel="nofollow"></a></p> <h3>16.2参数描写</h3> <p><code>xTaskToQuery</code>：任务句柄。NULL表示当前任务。</p> <p><code>xIndex</code>：写入到线程本地存储数组的索引号，线程本笃存储数组的大小由宏configNUM_THREAD_LOCAL_STORAGE_POINTERS设定，该宏在文件FreeRTOSConfig.h中。</p> <p class="maodian"><a name="_lab2_15_42" rel="nofollow"></a></p> <h3>16.3返回值</h3> <p>返回一个指针，这个指针存储在线程本地存储指针数组中，数组索引由参数xIndex指定。</p> <p class="maodian"><a name="_lab2_15_43" rel="nofollow"></a></p> <h3>16.4用法举例</h3> <p class="maodian"><a name="_label3_15_43_3" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-3">16.4.1存储一个整形数</h4> <div class="ay1code"> <pre class="brush:cpp;">uint32_tulVariable;  /* 向当前任务的线程本地存储数组下标为1的位置写入一个指向32位常量值的指针。*/  vTaskSetThreadLocalStoragePointer(NULL, 1, ( void * ) 0x12345678 );  /*向当前任务的线程本地存储数组下标为0的位置写入一个指向32整形值的指针*/  ulVariable= ERROR_CODE;  vTaskSetThreadLocalStoragePointer(NULL, 0, ( void * ) ulVariable );  /*从当前任务的线程本地存储数组下标为5的位置读取出一个指针并赋值给32位整形变量。*/  ulVariable= ( uint32_t ) pvTaskGetThreadLocalStoragePointer( NULL, 5 );</pre> </div> <p class="maodian"><a name="_label3_15_43_4" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-4">16.4.2存储结构提</h4> <div class="ay1code"> <pre class="brush:cpp;">typedefstruct  {      uint32_t ulValue1;      uint32_t ulValue2;  }xExampleStruct;  xExampleStruct*pxStruct;  /*为结构体分配内存*/  pxStruct= pvPortMalloc( sizeof( xExampleStruct ) );  /*为结构体成员赋值*/  pxStruct-&gt;ulValue1= 0;  pxStruct-&gt;ulValue2= 1;  /*向当前任务的线程本地存储数组下标为0的位置写入一个指向结构体变量的指针*/  vTaskSetThreadLocalStoragePointer(NULL, 0, ( void * ) pxStruct );  /*从当前任务的线程本地存储数组下标为0的位置读取出一个结构体指针*/  pxStruct= ( xExampleStruct * ) pvTaskGetThreadLocalStoragePointer( NULL, 0 );</pre> </div> <p class="maodian"><a name="_label16" rel="nofollow"></a></p> <h2>17.设置超时状态</h2> <p class="maodian"><a name="_lab2_16_44" rel="nofollow"></a></p> <h3>17.1函数描述</h3> <blockquote> <p>void vTaskSetTimeOutState( TimeOut_t *const pxTimeOut );</p> </blockquote> <p>此函数仅用于高级用户，通常与API函数xTaskCheckForTimeOut()共同使用。</p> <p>任务因为等待某事件而进入阻塞状态，通常情况下任务会设置一个等待超时周期。如果在等待事件超时，任务会退出阻塞状态。想象一个这样的应用，某任务等待一个事件而进入阻塞状态，但是事件迟迟不发生，超时后任务退出阻塞状态继续执行任务。假如任务等待的事件仍然没有发生，则任务又会阻塞在该事件下。只要任务等待的事件一直不发生，这个任务进入阻塞然后超时退出阻塞，再进入阻塞的循环就会一直存在。是不是可以设定一个总超时时间，只要总阻塞时间大于这个总超时时间，则可以结束这个任务或进行相应记录？freeRTOS提供了两个API函数来完成这个功能，这就是vTaskSetTimeOutState()和xTaskCheckForTimeOut()。</p> <p>vTaskSetTimeOutState()函数用于设置初始条件，之后调用xTaskCheckForTimeOut()函数检查任务总阻塞时间是否超过总超时时间，如果没有超过，则调整剩余的超时时间计数器。</p> <p class="maodian"><a name="_lab2_16_45" rel="nofollow"></a></p> <h3>17.2参数描述</h3> <p>pxTimeOut：指向一个结构体的指针，该结构体用来保存确定超时是否发生的必要信息。vTaskSetTimeOutState()函数会设置结构体的成员。</p> <p class="maodian"><a name="_lab2_16_46" rel="nofollow"></a></p> <h3>17.3用法举例</h3> <p>参见18.超时检测。</p> <p class="maodian"><a name="_label17" rel="nofollow"></a></p> <h2>18.超时检测</h2> <p class="maodian"><a name="_lab2_17_47" rel="nofollow"></a></p> <h3>18.1函数描述</h3> <div class="ay1code"> <pre class="brush:cpp;">         BaseType_t xTaskCheckForTimeOut(TimeOut_t * const pxTimeOut,                                   TickType_t* const pxTicksToWait );</pre> </div> <p>此函数仅用于高级用户，通常与API函数vTaskSetTimeOutState共同使用。</p> <p>详细描述见17.设置超时状态。</p> <p class="maodian"><a name="_lab2_17_48" rel="nofollow"></a></p> <h3>18.2参数描述</h3> <p><code>pxTimeOut</code>：指向一个结构体的指针。该结构体保存确定超时是否发生的必要信息。使用API函数vTaskSetTimeOutState初始化该结构体。</p> <p><code>pxTicksToWait</code>：TickType_t指针，指向的变量保存总超时时间。</p> <p class="maodian"><a name="_lab2_17_49" rel="nofollow"></a></p> <h3>18.3返回值</h3> <p>pdTRUE：总超时发生pdFALSE：总超时未发生</p> <p class="maodian"><a name="_lab2_17_50" rel="nofollow"></a></p> <h3>18.4用法举例</h3> <div class="ay1code"> <pre class="brush:cpp;">/* 函数用于从RX缓冲区中接收uxWantedBytes字节数据，RX缓冲区由UART中断填充。如果RX缓冲区没有足够的数据，则任务进入阻塞状态，直到RX缓冲区有足够数据或者发生超时。如果超时后仍然没有足够的数据，则任务会再次进入阻塞状态，xTaskCheckForTimeOut()函数用于重新计算总超时时间以确保总阻塞状态时间不超过MAX_TIME_TO_WAIT。如果总阻塞状态时间大于了总超时时间，则不管RX缓冲区是否有充足数据，都将这些数据读出来。   */  size_txUART_Receive( uint8_t *pucBuffer, size_t uxWantedBytes )  {      size_t uxReceived = 0;      TickType_t xTicksToWait = MAX_TIME_TO_WAIT;      TimeOut_t xTimeOut;      /* 初始化结构体变量xTimeOut。*/     vTaskSetTimeOutState( &amp;xTimeOut );     /* 无限循环，直到缓冲区包含足够的数据或者阻塞超时发生。*/     while( UART_bytes_in_rx_buffer(pxUARTInstance ) &lt; uxWantedBytes )     {        /* RX缓冲区没有足够多的数据，表示任务已经进入过一次阻塞状态。调用API函数xTaskCheckForTimeOut检查总阻塞时间是否超过总超时时间，如果没有，则调整剩余的总超时时间。*/        if( xTaskCheckForTimeOut( &amp;xTimeOut,&amp;xTicksToWait ) != pdFALSE )        {           /* 如果总阻塞时间大于总超时时间，则退出这个循环 */           break;        }         /* 在等待了xTicksToWait个系统节拍周期后，向接收中断发出通知，需要更多数据。  */        ulTaskNotifyTake( pdTRUE, xTicksToWait );     }       /*从RX缓冲区读取uxWantedBytes个字节并放到pucBuffer缓冲区。*/      uxReceived = UART_read_from_receive_buffer(pxUARTInstance,  pucBuffer,  uxWantedBytes );       return uxReceived;  }</pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-64550.htm">mysql 数据库密码问题</a></p>
+                                        <p>下一个：<a href="/news/article-65185.htm">动物医院实践心得5000字内容（动物医院社会实践报告）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-61547.htm" title="动物打疫苗多少钱 动物打疫苗多少钱一针">动物打疫苗多少钱 动物打疫苗多少钱一针</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-24-shadowrocket-node.htm" title="1月24日|最高速度19.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">1月24日|最高速度19.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-56384.htm" title="宠物粮的利润是多少 宠物粮的利润是多少啊">宠物粮的利润是多少 宠物粮的利润是多少啊</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-free-v2ray-subscribe.htm" title="12月2日|最高速度19.1M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">12月2日|最高速度19.1M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-25-free-node-subscribe.htm" title="12月25日|最高速度22.5M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">12月25日|最高速度22.5M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-18-free-subscribe-node.htm" title="2月18日|最高速度23M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">2月18日|最高速度23M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-45971.htm" title="地包天七岁正牙晚了吗（七岁小孩地包天）">地包天七岁正牙晚了吗（七岁小孩地包天）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-5-node-share.htm" title="12月5日|最高速度18.7M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐">12月5日|最高速度18.7M/S，2024最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-53637.htm" title="PYTHON select in">PYTHON select in</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-10-clash-node-daily-updates.htm" title="1月10日|最高速度19.1M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">1月10日|最高速度19.1M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of details 1 -->
+    
+        <!-- Copyright -->
+    <div class="copyright bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul class="list-unstyled li-space-lg p-small">
+                        <li><a href="#">Article Details</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div> <!-- end of col -->
+                <div class="col-lg-6">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        <a href="/">Hysteria2官网订阅站</a> 版权所有 Powered by WordPress
+                    </p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright -->
+    <!-- end of copyright -->
+    <!-- Back To Top Button -->
+    <button onclick="topFunction()" id="myBtn">
+        <img src="/assets/website/img/hysteria2/up-arrow.png" alt="alternative">
+    </button>
+    <!-- end of back to top button -->
+    <!-- Scripts -->
+    <script src="/assets/website/js/frontend/hysteria2/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="/assets/website/js/frontend/hysteria2/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="/assets/website/js/frontend/hysteria2/purecounter.min.js"></script> <!-- Purecounter counter for statistics numbers -->
+    <script src="/assets/website/js/frontend/hysteria2/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+    <script src="/assets/website/js/frontend/hysteria2/scripts.js"></script> <!-- Custom scripts -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
