@@ -114,6 +114,7 @@
                   				  				  				</h1> <p>从RHEL8/CentOS8开始，dnf取代yum作为rpm 包管理工具。与之而来的还有模块（module）这个东西。 有了它们的加持，让在同一个OS上安装不同版本的软件或者开发语言的工作比之前容易多了。</p> </h1> <p><strong>Modules</strong>&nbsp;are special package groups usually representing an application, a language runtime, or a set of tools. They are available in one or<strong>multiple streams</strong>&nbsp;which usually represent a major version of a piece of software, giving you an option to choose what versions of packages you want to consume.</p> <p>To simplify installation, modules usually define one or more<strong>installation profiles</strong>&nbsp;that represent a specific use case. For example a<code>server</code>&nbsp;or a<code>client</code>&nbsp;profile in a database module.</p> <p>也就是说：</p> <p>一个软件可以有多个版本，每个版本对应一个stream. 在每个stream内部，又分为proile对应到安装场景（比如开发， server， client）。</p> <h2 id="实际dnf使用中的要点"><strong>实际dnf使用中的要点</strong></h2> <p>如果module有多个stream(版本)，会有一个是默认的, 在dnf命令输出里面在stream name后用[d]表示</p> <p>如果某个stream有多个profiles, 会有一个默认的，在dnf命令输出里面在profile name后用[d]表示</p> </h1> <p>语法</p> <pre><code class="language-csharp">    $ dnf module install NAME     $ dnf module install NAME:STREAM     $ dnf module install NAME/PROFILE     $ dnf module install NAME:STREAM/PROFILE</code></pre> </h1> <pre><code class="language-csharp">$ sudo dnf module list nginx Red Hat Enterprise Linux 8 for x86_64 - AppStream (RPMs) Name                     Stream                      Profiles                      Summary                           nginx                    1.14 [d]                    common [d]                    nginx webserver                   nginx                    1.16                        common [d]                    nginx webserver                   nginx                    1.18                        common [d]                    nginx webserver                   nginx                    1.20                        common [d]                    nginx webserver                    Hint: [d]efault, [e]nabled, [x]disabled, [i]nstalled</code></pre> <p><strong>解读output：</strong></p> <p>nginx module 有4个stream(对应4个版本），默认安装的是1.14，1.14这个stream只有一个profile “common”, 它也是默认安装的profile</p> </h1> <pre><code class="language-csharp">$ dnf module list --installed Name      Stream       Profiles                                   Summary                                                        nodejs    14 [e]       common [d] [i], development, minimal, s2i  Javascript runtime                                             python39  3.9 [d][e]   build, common [d] [i]                      Python programming language, version 3.9                        Hint: [d]efault, [e]nabled, [x]disabled, [i]nstalled</code></pre> <p><code>dnf module list --installed</code> 显示已经安装的module</p> <p><strong>查看输出 nodejs这一行表示：</strong></p> <p><code>14 [e]:</code> 表示14这个版本(stream)已经启用了，用[e]表示. 这里[e]就肯定说明已经安装了</p> <p><code>common [d] [i], development, minimal, s2i</code>  : 共4个profiles： common, devleopment, mininal, s2i。 其中common 是默认的Profile,用[d]表示，而且它已经安装在本机了，用[i]表示</p> <p><strong>查看输出 python39这一行表示：</strong></p> <p>3.9 [d] [3]: 3.9这个版本(stream)是这个module的缺省版本，用[d]表示；而且是已经启用了，用[e]表示。 这里[e]就肯定说明已经安装了</p> </h1> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.fedoraproject.org/en-US/modularity/using-modules/"  target="_blank" rel="nofollow">https://docs.fedoraproject.org/en-US/modularity/using-modules/</a></p> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-70932.htm">数据结构详解·一树的初步</a></p>
+                                        <p>下一个：<a href="/news/article-71602.htm">动物疫苗接种禁忌症和注意事项图片视频 动物疫苗接种禁忌症和注意事项图片视频讲解</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -123,16 +124,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-45971.htm" title="地包天七岁正牙晚了吗（七岁小孩地包天）">地包天七岁正牙晚了吗（七岁小孩地包天）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-2-5-clash-node.htm" title="2月5日|最高速度21.3M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">2月5日|最高速度21.3M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-4-shadowrocket-node.htm" title="1月4日|最高速度20.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">1月4日|最高速度20.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/news/article-40507.htm" title="动物医院24小时全天候诊多少钱（动物医院一般几点关门）">动物医院24小时全天候诊多少钱（动物医院一般几点关门）</a></li>
-                        <li class="py-2"><a href="/news/article-35437.htm" title="流感最常见的并发症是肺炎（真没想到）流感引发肺炎多久会好，后厨演员表，胡洋，">流感最常见的并发症是肺炎（真没想到）流感引发肺炎多久会好，后厨演员表，胡洋，</a></li>
-                        <li class="py-2"><a href="/news/article-57502.htm" title="兽用疫苗放一晚上还能用吗有毒吗（兽用疫苗可以放家用冰箱里吗）">兽用疫苗放一晚上还能用吗有毒吗（兽用疫苗可以放家用冰箱里吗）</a></li>
-                        <li class="py-2"><a href="/news/article-38019.htm" title="springboot关于mysql数据库date时间的坑">springboot关于mysql数据库date时间的坑</a></li>
-                        <li class="py-2"><a href="/news/article-39511.htm" title="无货源网店怎么发货视频（无货源开店怎么发货）">无货源网店怎么发货视频（无货源开店怎么发货）</a></li>
-                        <li class="py-2"><a href="/news/article-49437.htm" title="VUE项目解决Vant组件库样式修改不生效问题">VUE项目解决Vant组件库样式修改不生效问题</a></li>
-                        <li class="py-2"><a href="/news/article-35921.htm" title="动物医院好评语大全集 动物医院好评语大全集怎么写">动物医院好评语大全集 动物医院好评语大全集怎么写</a></li>
+                        <li class="py-2"><a href="/news/article-61546.htm" title="Jenkins 脚本命令行应用总结">Jenkins 脚本命令行应用总结</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-11-free-v2ray-subscribe.htm" title="3月11日|最高速度20.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">3月11日|最高速度20.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-13-free-shadowrocket-node.htm" title="3月13日|最高速度19.5M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">3月13日|最高速度19.5M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-39029.htm" title="动物疫苗生产许可审批流程（动物疫苗生产许可审批流程视频）">动物疫苗生产许可审批流程（动物疫苗生产许可审批流程视频）</a></li>
+                        <li class="py-2"><a href="/news/article-46467.htm" title="动物疫苗的作用是什么呢英文翻译（动物疫苗的作用是什么呢英文翻译成中文）">动物疫苗的作用是什么呢英文翻译（动物疫苗的作用是什么呢英文翻译成中文）</a></li>
+                        <li class="py-2"><a href="/news/article-61547.htm" title="动物打疫苗多少钱 动物打疫苗多少钱一针">动物打疫苗多少钱 动物打疫苗多少钱一针</a></li>
+                        <li class="py-2"><a href="/news/article-67701.htm" title="ES6基础语法之class类介绍_基础知识">ES6基础语法之class类介绍_基础知识</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-10-free-node-subscribe-links.htm" title="3月10日|最高速度19.3M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">3月10日|最高速度19.3M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-7-free-ssr-node.htm" title="3月7日|最高速度18M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">3月7日|最高速度18M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-1-clash-windows.htm" title="3月1日|最高速度21.5M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">3月1日|最高速度21.5M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
                     </ul>
     </div>
 </div>
@@ -144,7 +145,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>

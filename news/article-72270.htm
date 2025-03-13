@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hysteria2.github.io/news/article-72270.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Webpage Title -->
+    <title>Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)</title>
+        <meta name="description" content="Go后端项目服务器部署笔记  前言   mac远程连接服务器 一些Linux小工具   htop Byobu   Go环境安装   wget安装 wget命令下载安装包 配置Go环境变量   MySQ" />
+        <link rel="icon" href="/assets/website/img/hysteria2/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Hysteria2官网订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hysteria2.github.io/news/article-72270.htm" />
+    <meta property="og:site_name" content="Hysteria2官网订阅站" />
+    <meta property="og:title" content="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)" />
+    <meta property="og:image" content="https://hysteria2.github.io/uploads/20240507/ad6ef8360716b22fc8526a2895fbfd68.webp" />
+        <meta property="og:release_date" content="2025-03-12T06:08:33" />
+    <meta property="og:updated_time" content="2025-03-12T06:08:33" />
+        <meta property="og:description" content="Go后端项目服务器部署笔记  前言   mac远程连接服务器 一些Linux小工具   htop Byobu   Go环境安装   wget安装 wget命令下载安装包 配置Go环境变量   MySQ" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="/assets/website/css/hysteria2/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/css/hysteria2/fontawesome-all.min.css" rel="stylesheet">
+    <link href="/assets/website/css/hysteria2/swiper.css" rel="stylesheet">
+    <link href="/assets/website/css/hysteria2/styles.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0LQ0YHE09L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0LQ0YHE09L');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbarExample" data-page="detail">
+        <!-- Navigation -->
+    <nav id="navbarExample" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
+        <div class="container">
+            <!-- Image Logo -->
+            <a class="navbar-brand logo-image" href="/">
+                            <span>Hysteria2</span>
+                        </a>
+            <!-- Text Logo - Use this if you don't have a graphic logo -->
+            <!-- <a class="navbar-brand logo-text" href="index.html">Zinc</a> -->
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/client.htm">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                    </ul>
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+    <!-- Header -->
+    <header class="ex-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <h1>Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)</h1>
+                    <div class="section-title">
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </div>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+    <!-- Details 1 -->
+    <div id="details" class="basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3>Go后端项目服务器部署笔记</h3> <ul> <li><a href="#_1" rel="nofollow">前言</a></li> <li> <ul> <li><a href="#mac_9" rel="nofollow">mac远程连接服务器</a></li> <li><a href="#Linux_38" rel="nofollow">一些Linux小工具</a></li> <li> <ul> <li><a href="#htop_40" rel="nofollow">htop</a></li> <li><a href="#Byobu_48" rel="nofollow">Byobu</a></li> </ul> </li> <li><a href="#Go_68" rel="nofollow">Go环境安装</a></li> <li> <ul> <li><a href="#wget_70" rel="nofollow">wget安装</a></li> <li><a href="#wget_76" rel="nofollow">wget命令下载安装包</a></li> <li><a href="#Go_103" rel="nofollow">配置Go环境变量</a></li> </ul> </li> <li><a href="#MySQL_136" rel="nofollow">MySQL</a></li> <li> <ul> <li><a href="#_138" rel="nofollow">安装</a></li> <li><a href="#MySQL_153" rel="nofollow">初始化MySQL</a></li> <li><a href="#mysql_213" rel="nofollow">检查mysql服务状态</a></li> <li><a href="#mysql_224" rel="nofollow">创建mysql账户</a></li> <li><a href="#mysql_233" rel="nofollow">配置mysql允许远程访问</a></li> <li><a href="#Navicatmysql_293" rel="nofollow">使用Navicat远程连接mysql</a></li> </ul> </li> <li><a href="#Nginx_302" rel="nofollow">Nginx</a></li> <li> <ul> <li><a href="#sitesenabled_319" rel="nofollow">配置sites-enabled</a></li> </ul> </li> <li><a href="#_361" rel="nofollow">管理服务器文件</a></li> <li><a href="#Git_377" rel="nofollow">Git</a></li> <li> <ul> <li><a href="#Git_379" rel="nofollow">安装Git</a></li> </ul> </li> <li><a href="#_387" rel="nofollow">拉取你的项目</a></li> <li><a href="#_404" rel="nofollow">编译你的项目</a></li> <li> <ul> <li><a href="#Go_ModulesGOPROXY_408" rel="nofollow">首先开启Go Modules，设置GOPROXY</a></li> <li><a href="#go_build_417" rel="nofollow">使用go build命令编译你的项目</a></li> </ul> </li> <li><a href="#Goland_423" rel="nofollow">Goland远程开发</a></li> <li> <ul> <li><a href="#_427" rel="nofollow">作用</a></li> <li><a href="#_431" rel="nofollow">如何配置</a></li> </ul> </li> <li><a href="#_459" rel="nofollow">热更新</a></li> <li><a href="#_469" rel="nofollow">运行你的项目</a></li> </ul> </li> </ul> </div> </h1> <blockquote> <p>最近写的一个Golang后端项目需要部署到服务器上，涉及到许多方面的知识，操作较为繁复。所以我一边部署一边把相关步骤记录下来，形成此文，供大家参考。<br /> 作者水平有限，有任何问题欢迎在文章下方留言交流！</p> <p>本文使用的电脑是m1的mac，系统为macOS Big Sur 11.5.1。<br /> 服务器是华为云的x86云服务器，系统是Ubuntu20.04.1 LTS。</p> </blockquote> <h2> <a id="mac_9" rel="nofollow"></a>mac远程连接服务器</h2> <p>1、右键dock栏的终端，选择新建远程连接</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/7c1a9339b16b7b1475fea6e553fbc622.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <p>2、在弹出来的窗口中点击“+”号</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/9ba58129be72efd6bc03af3774e564fe.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <p>3、输入你的服务器IP地址</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/a92710c2d156aff2bf8df8c401abc1f6.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <p>4、在服务器栏选择你的服务器IP地址，然后在用户栏填入你的用户名，点击链接</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/9e1c851919b856abfdaada74e1ac18df.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <p>5、输入你的密码即可连接你的服务器<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/024d187bb64c26dadefc2784d78f9765.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <p>连接成功！<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/6a963ad183829d8501e43a60d409f899.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <h2> <a id="Linux_38" rel="nofollow"></a>一些Linux小工具</h2> <h3> <a id="htop_40" rel="nofollow"></a>htop</h3> <p>安装</p> <pre><code class="prism language-bash">$ <span class="token function">sudo</span> apt <span class="token function">install</span> <span class="token function">htop</span> </code></pre> <h3> <a id="Byobu_48" rel="nofollow"></a>Byobu</h3> <p>安装</p> <pre><code class="prism language-bash">$ <span class="token function">sudo</span> apt <span class="token function">install</span> byobu </code></pre> <p>操作：<br /> mac下很多快捷键被系统占用，导致许多快捷键与windows和linux不同。<br /> 这里我列举mac下几个常用操作的快捷键：</p> <p>F2：新建窗口</p> <p>F3/F4：切换窗口</p> <p>ctrl+d：关闭当前窗口</p> <p>F6：退出byobu</p> <h2> <a id="Go_68" rel="nofollow"></a>Go环境安装</h2> <h3> <a id="wget_70" rel="nofollow"></a>wget安装</h3> <pre><code class="prism language-bash">$ <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">wget</span> </code></pre> <h3> <a id="wget_76" rel="nofollow"></a>wget命令下载安装包</h3> <p>官网下载地址：https://golang.org/dl/（需要梯子）</p> <p>国内安装包下载路径：https://studygolang.com/dl</p> <pre><code class="prism language-bash">$ <span class="token function">wget</span> https://studygolang.com/dl/golang/go1.16.6.linux-amd64.tar.gz </code></pre> <p>解压gz包</p> <pre><code class="prism language-bash">$ <span class="token function">gzip</span> -d go1.16.6.linux-amd64.tar.gz </code></pre> <p>再解压tar包</p> <pre><code class="prism language-bash">$ <span class="token function">tar</span> -xvf go1.16.6.linux-amd64.tar </code></pre> <p>用ls命令查看文件目录（多了个go文件夹）</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/53ab1fe1ef0240f32dd1d7c6f74f636f.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <h3> <a id="Go_103" rel="nofollow"></a>配置Go环境变量</h3> <p>首先使用vim打开环境变量编辑</p> <pre><code class="prism language-bash">$ vim /etc/profile </code></pre> <p>在文件最后加上几行配置</p> <pre><code class="prism language-bash"><span class="token function">export</span> GOPATH<span class="token operator">=</span>/root/gopath   你的工作目录（在这里创建.go文件） <span class="token function">export</span> GOROOT<span class="token operator">=</span>/root/go     go的安装目录 <span class="token function">export</span> PATH<span class="token operator">=</span><span class="token variable">$PATH</span><span class="token keyword">:</span><span class="token variable">$GOROOT</span>/bin:<span class="token variable">$GOPATH</span>/bin </code></pre> <p><strong>注意：GOPATH和GOROOT不能一样</strong></p> <p>按esc键退出编辑。<br /> 输入“：wq”保存并关闭文件。</p> <p><strong>使用source命令应用环境变量更新</strong></p> <pre><code class="prism language-bash">$ <span class="token function">source</span> /etc/profile </code></pre> <p>测试go安装</p> <pre><code class="prism language-bash">$ go version </code></pre> <h2> <a id="MySQL_136" rel="nofollow"></a>MySQL</h2> <h3> <a id="_138" rel="nofollow"></a>安装</h3> <pre><code class="prism language-bash">$ apt <span class="token function">install</span> mysql-server </code></pre> <p>验证是否安装成功</p> <pre><code class="prism language-bash">$ mysql </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/bf9bd92325659ffdfd5f80eee4c12865.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <h3> <a id="MySQL_153" rel="nofollow"></a>初始化MySQL</h3> <pre><code class="prism language-bash">root@sever-zs:~<span class="token comment"># mysql_secure_installation</span>  Securing the MySQL server deployment.  Connecting to MySQL using a blank password.  VALIDATE PASSWORD COMPONENT can be used to <span class="token function">test</span> passwords and improve security. It checks the strength of password and allows the <span class="token function">users</span> to <span class="token keyword">set</span> only those passwords <span class="token function">which</span> are secure enough. Would you like to setup VALIDATE PASSWORD component?  Press y<span class="token operator">|</span>Y <span class="token keyword">for</span> Yes, any other key <span class="token keyword">for</span> No: n   <span class="token comment"># 是否需要安装验证密码插件？</span> Please <span class="token keyword">set</span> the password <span class="token keyword">for</span> root here.  New password:              <span class="token comment"># 设置root账户的密码</span>  Re-enter new password:     <span class="token comment"># 再次输入root账户的密码</span> By default, a MySQL installation has an anonymous user, allowing anyone to log into MySQL without having to have a user account created <span class="token keyword">for</span> them. This is intended only <span class="token keyword">for</span> testing, and to <span class="token function">make</span> the installation go a bit smoother. You should remove them before moving into a production environment.  Remove anonymous users? <span class="token punctuation">(</span>Press y<span class="token operator">|</span>Y <span class="token keyword">for</span> Yes, any other key <span class="token keyword">for</span> No<span class="token punctuation">)</span> <span class="token keyword">:</span> y  <span class="token comment"># 是否需要删除匿名账户？</span> Success.   Normally, root should only be allowed to connect from <span class="token string">'localhost'</span><span class="token keyword">.</span> This ensures that someone cannot guess at the root password from the network.  Disallow root login remotely? <span class="token punctuation">(</span>Press y<span class="token operator">|</span>Y <span class="token keyword">for</span> Yes, any other key <span class="token keyword">for</span> No<span class="token punctuation">)</span> <span class="token keyword">:</span> n    <span class="token comment"># 是否禁止root管理员从远程登录？</span>   <span class="token punctuation">..</span>. skipping. By default, MySQL comes with a database named <span class="token string">'test'</span> that anyone can access. This is also intended only <span class="token keyword">for</span> testing, and should be removed before moving into a production environment.   Remove <span class="token function">test</span> database and access to it? <span class="token punctuation">(</span>Press y<span class="token operator">|</span>Y <span class="token keyword">for</span> Yes, any other key <span class="token keyword">for</span> No<span class="token punctuation">)</span> <span class="token keyword">:</span> y   <span class="token comment"># 是否删除默认的test数据库并取消对它的访问权限？</span>  - Dropping <span class="token function">test</span> database<span class="token punctuation">..</span>. Success.   - Removing privileges on <span class="token function">test</span> database<span class="token punctuation">..</span>. Success.  Reloading the privilege tables will ensure that all changes made so far will take effect immediately.  Reload privilege tables now? <span class="token punctuation">(</span>Press y<span class="token operator">|</span>Y <span class="token keyword">for</span> Yes, any other key <span class="token keyword">for</span> No<span class="token punctuation">)</span> <span class="token keyword">:</span> y     <span class="token comment"># 是否刷新授权表，让初始化后的设定立即生效？</span> Success.  All done<span class="token operator">!</span>  </code></pre> <h3> <a id="mysql_213" rel="nofollow"></a>检查mysql服务状态</h3> <pre><code>$ systemctl status mysql </code></pre> <p>如下图则表示mysql服务运行正常</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/3efb2d6a7800dab06080eb7d026e8719.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <h3> <a id="mysql_224" rel="nofollow"></a>创建mysql账户</h3> <pre><code class="prism language-bash">$ mysql -u root -p 输入密码 mysql<span class="token operator">&gt;</span> use mysql<span class="token punctuation">;</span> mysql<span class="token operator">&gt;</span> create user <span class="token string">'用户名'</span>@<span class="token string">'localhost'</span> identified by <span class="token string">'密码'</span><span class="token punctuation">;</span> </code></pre> <h3> <a id="mysql_233" rel="nofollow"></a>配置mysql允许远程访问</h3> <p>进入mysql数据库，执行授权命令</p> <pre><code class="prism language-bash">$ mysql -u root -p  mysql<span class="token operator">&gt;</span> grant all privileges on *.* to <span class="token string">'syb'</span>@<span class="token string">'%'</span><span class="token punctuation">;</span> ERROR 1410 <span class="token punctuation">(</span>42000<span class="token punctuation">)</span>: You are not allowed to create a user with GRANT\ // 授权失败 mysql<span class="token operator">&gt;</span> <span class="token keyword">select</span> user, host from user<span class="token punctuation">;</span> +------------------+-----------+ <span class="token operator">|</span> user             <span class="token operator">|</span> host      <span class="token operator">|</span> +------------------+-----------+ <span class="token operator">|</span> root             <span class="token operator">|</span> %         <span class="token operator">|</span> <span class="token operator">|</span> root             <span class="token operator">|</span> 127.0.0.1 <span class="token operator">|</span> <span class="token operator">|</span> root             <span class="token operator">|</span> localhoat <span class="token operator">|</span> <span class="token operator">|</span> debian-sys-maint <span class="token operator">|</span> localhost <span class="token operator">|</span> <span class="token operator">|</span> mysql.infoschema <span class="token operator">|</span> localhost <span class="token operator">|</span> <span class="token operator">|</span> mysql.session    <span class="token operator">|</span> localhost <span class="token operator">|</span> <span class="token operator">|</span> mysql.sys        <span class="token operator">|</span> localhost <span class="token operator">|</span> <span class="token operator">|</span> root             <span class="token operator">|</span> localhost <span class="token operator">|</span> <span class="token operator">|</span> syb              <span class="token operator">|</span> localhost <span class="token operator">|</span> +------------------+-----------+  // 我们尝试直接更新数据表中的host mysql<span class="token operator">&gt;</span> update user <span class="token keyword">set</span> host <span class="token operator">=</span> <span class="token string">'%'</span> where user <span class="token operator">=</span> <span class="token string">'syb'</span> and host<span class="token operator">=</span><span class="token string">'localhost'</span><span class="token punctuation">;</span> Query OK, 1 row affected <span class="token punctuation">(</span>0.01 sec<span class="token punctuation">)</span> Rows matched: 1  Changed: 1  Warnings: 0  // 手动更新成功 mysql<span class="token operator">&gt;</span> <span class="token keyword">select</span> user, host from user<span class="token punctuation">;</span> +------------------+-----------+ <span class="token operator">|</span> user             <span class="token operator">|</span> host      <span class="token operator">|</span> +------------------+-----------+ <span class="token operator">|</span> root             <span class="token operator">|</span> %         <span class="token operator">|</span> <span class="token operator">|</span> syb              <span class="token operator">|</span> %         <span class="token operator">|</span> <span class="token operator">|</span> root             <span class="token operator">|</span> 127.0.0.1 <span class="token operator">|</span> <span class="token operator">|</span> root             <span class="token operator">|</span> localhoat <span class="token operator">|</span> <span class="token operator">|</span> debian-sys-maint <span class="token operator">|</span> localhost <span class="token operator">|</span> <span class="token operator">|</span> mysql.infoschema <span class="token operator">|</span> localhost <span class="token operator">|</span> <span class="token operator">|</span> mysql.session    <span class="token operator">|</span> localhost <span class="token operator">|</span> <span class="token operator">|</span> mysql.sys        <span class="token operator">|</span> localhost <span class="token operator">|</span> <span class="token operator">|</span> root             <span class="token operator">|</span> localhost <span class="token operator">|</span> +------------------+-----------+  // 再次授权 mysql<span class="token operator">&gt;</span> grant all privileges on *.* to <span class="token string">'syb'</span>@<span class="token string">'%'</span><span class="token punctuation">;</span> Query OK, 0 rows affected <span class="token punctuation">(</span>0.01 sec<span class="token punctuation">)</span>  // 执行更改 mysql<span class="token operator">&gt;</span> flush privileges<span class="token punctuation">;</span> Query OK, 0 rows affected <span class="token punctuation">(</span>0.01 sec<span class="token punctuation">)</span> </code></pre> <p>退出mysql，重启一下mysql服务</p> <pre><code class="prism language-bash">$ <span class="token function">service</span> mysql restart </code></pre> <h3> <a id="Navicatmysql_293" rel="nofollow"></a>使用Navicat远程连接mysql</h3> <p>打开Navicat Premium，新建MySQL连接，将服务器主机地址，端口，mysql用户名及密码填写好，点击保存。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/1545ffa2ccdd6d552778dfd9c9058bee.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <p>到这你就可以远程管理你的mysql数据库了！</p> <h2> <a id="Nginx_302" rel="nofollow"></a>Nginx</h2> <p>安装</p> <pre><code class="prism language-bash">$ apt <span class="token function">install</span> nginx </code></pre> <p>检查是否安装成功</p> <pre><code class="prism language-bash">$ nginx -v </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/fb96e242d90834ad253e3f55e265ddf5.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <h3> <a id="sitesenabled_319" rel="nofollow"></a>配置sites-enabled</h3> <pre><code class="prism language-bash">$ vim /etc/nginx/sites-enabled/default </code></pre> <p>如果你不知道sites-enabled的位置，你可以使用以下命令进行查看</p> <pre><code class="prism language-bash">$ nginx -h </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/ad06cf7ef6cc9870b180dc375b5ab962.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <p>-c那一行的最后面，可以查看你的nginx.conf所在目录，sites-enabled在其同级目录下。</p> <p>打开sites-enabled/default文件</p> <p>nginx默认监听外部请求的80端口</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/050608d4e27a3b3bea2c838ab70e67b7.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <p>我们在server{}里最后添加以下代码，让nginx为我们做反向代理。</p> <pre><code class="prism language-nginx">location /api/  {   	proxy_pass         http://127.0.0.1:8080/;  # 转发到你服务器内部的端口号   	proxy_redirect     off;    	proxy_set_header   Host                 $host;   	proxy_set_header   X-Real-IP            $remote_addr;   	proxy_set_header   X-Forwarded-For      $proxy_add_x_forwarded_for;   	proxy_set_header   X-Forwarded-Proto    $scheme;                 	client_max_body_size 1000m;  	} </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/31f5038feda882f1f30c1cb9a0af3057.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"><br /> https证书配置暂时还没有搞。</p> <h2> <a id="_361" rel="nofollow"></a>管理服务器文件</h2> <p>可以使用ForkLift进行服务器文件管理</p> <p>安装ForkLift并打开，点击菜单栏上的前往-&gt;连接</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/560816edd85bdfa62fa2a038627d51d2.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <p>在弹出的窗口中填入相关信息即可连接到你的服务器</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/34f358005f553fe9e4aa9c911abcdb0c.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/eb7815c9f206ebaa5db557d1d11a3fd8.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <h2> <a id="Git_377" rel="nofollow"></a>Git</h2> <h3> <a id="Git_379" rel="nofollow"></a>安装Git</h3> <p>在Ubuntu下使用apt安装工具进行安装</p> <pre><code class="prism language-bash">$ <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">git</span> </code></pre> <h2> <a id="_387" rel="nofollow"></a>拉取你的项目</h2> <p>在GOPATH目录下新建src文件夹</p> <p>cd到src目录下</p> <p>使用git命令从github克隆你的项目到服务器GOPATH/src目录下</p> <pre><code class="prism language-bash">$ <span class="token function">git</span> clone https://github.com/ZibeSun/PDT-serve </code></pre> <p>如果你的项目库是私有库的话，你还需要依次输入你的github用户名和密码。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/7115a89bbe55f8592ceeeffa4d16010f.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <h2> <a id="_404" rel="nofollow"></a>编译你的项目</h2> <p>cd到你的项目目录</p> <h3> <a id="Go_ModulesGOPROXY_408" rel="nofollow"></a>首先开启Go Modules，设置GOPROXY</h3> <pre><code class="prism language-bash">// 启用 Go Modules 功能 $ go <span class="token function">env</span> -w GO111MODULE<span class="token operator">=</span>on // 配置 GOPROXY 环境变量 $ go <span class="token function">env</span> -w GOPROXY<span class="token operator">=</span>https://mirrors.aliyun.com/goproxy/ </code></pre> <h3> <a id="go_build_417" rel="nofollow"></a>使用go build命令编译你的项目</h3> <pre><code class="prism language-bash">$ go build main.go </code></pre> <h2> <a id="Goland_423" rel="nofollow"></a>Goland远程开发</h2> <p>Goland自带的远程开发Deployment可以帮助我们高效的调试修改服务器上的代码。</p> <h3> <a id="_427" rel="nofollow"></a>作用</h3> <p>它通过sftp与服务器进行连接，当我们在自己电脑上修改代码并按下ctrl+s保存时，他可以帮助我们自动把服务器上的代码也进行更新。十分的方便。</p> <h3> <a id="_431" rel="nofollow"></a>如何配置</h3> <p>打开Goland，点击菜单栏Tools-&gt;Deployment-&gt;Configuration</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/8c61dbc84377e716c3d8897b36a6a7a6.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <p>点击➕号添加<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/29f13eaa3ff964c8b4c102a86b0cb31e.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <p>在SSH configuration栏添加你的服务器</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/54351e426977e7367b32246bc2ae4c02.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <p>然后在次窗口上方选择Mappings设置你的本地项目路径和服务器项目路径</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/fe9cea8402722ef063c1d415782d7584.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <p>最后勾选菜单栏Tools-&gt;Deployment-&gt;Automatic Upload，这样你就可以在每次ctrl+s后自动更新你服务器上的代码了！</p> <p><strong>（Deployment只能更新服务器上已存在的文件，如果你的服务器没有某个文件，你可以点击“Upload to 你的Deployment名称”来将本地项目上传到你的服务器）</strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/21a80f204d74b54e5e458c634fc05088.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> <h2> <a id="_459" rel="nofollow"></a>热更新</h2> <p>为了使我们在调试阶段可以方便的修改后端项目代码，我们将使用air运行我们的项目。air可以自动检测项目代码是否有改动，如果有它将自动把项目重新编译并重启项目，十分的方便。</p> <p>手动安装一下air</p> <pre><code class="prism language-bash">$ go get -u github.com/cosmtrek/air </code></pre> <h2> <a id="_469" rel="nofollow"></a>运行你的项目</h2> <p>先进入mysql手动创建一下你需要的数据库</p> <pre><code class="prism language-bash">$ mysql -u syb -p mysql<span class="token operator">&gt;</span> create database <span class="token operator">&lt;</span>数据库名称<span class="token operator">&gt;</span> </code></pre> <p>打开byobu，在byobu的窗口中运行你的项目，不然如果你直接在前台运行你的项目，一旦你与服务器断开连接，你的项目便会停止运行，而使用byobu则在你与服务器断连后会自动运行在服务器后台，你的项目也将持续运行。</p> <pre><code class="prism language-bash">$ byobu </code></pre> <p>cd到你的项目目录，使用air命令运行项目</p> <pre><code class="prism language-bash">$ air </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/91d1a3056da2751e9a26bac3cf2c43c9.jpg" alt="Go后端项目服务器一站式部署笔记(Gin+MySQL+Nginx)"></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-71603.htm">动物疫苗厂家排名榜单前十 动物疫苗厂家排名榜单前十名</a></p>
+                                        <p>下一个：<a href="/news/article-72271.htm">益宠宠物医院官方店 益宠宠物医院官方店铺</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-55278.htm" title="猫三联多少钱一针为什么有上千（猫三联一共几针多少钱）">猫三联多少钱一针为什么有上千（猫三联一共几针多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-16-free-node-subscribe.htm" title="2月16日|最高速度20.5M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">2月16日|最高速度20.5M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-5-free-clash-subscribe.htm" title="1月5日|最高速度19.3M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">1月5日|最高速度19.3M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-56942.htm" title="动物注射疫苗最佳的用药方法是什么药品（给动物注射疫苗）">动物注射疫苗最佳的用药方法是什么药品（给动物注射疫苗）</a></li>
+                        <li class="py-2"><a href="/news/article-43476.htm" title="动物接种疫苗后产生的免疫称为 动物接种疫苗后产生的免疫称为什么">动物接种疫苗后产生的免疫称为 动物接种疫苗后产生的免疫称为什么</a></li>
+                        <li class="py-2"><a href="/news/article-35921.htm" title="动物医院好评语大全集 动物医院好评语大全集怎么写">动物医院好评语大全集 动物医院好评语大全集怎么写</a></li>
+                        <li class="py-2"><a href="/news/article-57502.htm" title="兽用疫苗放一晚上还能用吗有毒吗（兽用疫苗可以放家用冰箱里吗）">兽用疫苗放一晚上还能用吗有毒吗（兽用疫苗可以放家用冰箱里吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-17-free-v2ray.htm" title="1月17日|最高速度22M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">1月17日|最高速度22M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-63943.htm" title="用Python读hdfs集群parquet格式文件">用Python读hdfs集群parquet格式文件</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-23-free-v2ray-subscribe.htm" title="2月23日|最高速度22.3M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">2月23日|最高速度22.3M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of details 1 -->
+    
+        <!-- Copyright -->
+    <div class="copyright bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul class="list-unstyled li-space-lg p-small">
+                        <li><a href="#">Article Details</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div> <!-- end of col -->
+                <div class="col-lg-6">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        <a href="/">Hysteria2官网订阅站</a> 版权所有 Powered by WordPress
+                    </p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright -->
+    <!-- end of copyright -->
+    <!-- Back To Top Button -->
+    <button onclick="topFunction()" id="myBtn">
+        <img src="/assets/website/img/hysteria2/up-arrow.png" alt="alternative">
+    </button>
+    <!-- end of back to top button -->
+    <!-- Scripts -->
+    <script src="/assets/website/js/frontend/hysteria2/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="/assets/website/js/frontend/hysteria2/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="/assets/website/js/frontend/hysteria2/purecounter.min.js"></script> <!-- Purecounter counter for statistics numbers -->
+    <script src="/assets/website/js/frontend/hysteria2/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+    <script src="/assets/website/js/frontend/hysteria2/scripts.js"></script> <!-- Custom scripts -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
