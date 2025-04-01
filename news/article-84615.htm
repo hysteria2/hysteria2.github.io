@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://hysteria2.github.io/news/article-84615.htm" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Webpage Title -->
+    <title>SpringCloud Gateway及相关概念简介</title>
+        <meta name="description" content="SpringCloud Gateway 简介  SpringCloud Gateway 简介   1. 定义 2. 处理流程 3. 路由 4. 熔断降级 5. 高级配置 补充说明：   java NI" />
+        <link rel="icon" href="/assets/website/img/hysteria2/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Hysteria2官网订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hysteria2.github.io/news/article-84615.htm" />
+    <meta property="og:site_name" content="Hysteria2官网订阅站" />
+    <meta property="og:title" content="SpringCloud Gateway及相关概念简介" />
+    <meta property="og:image" content="https://hysteria2.github.io/uploads/20240507/60294a624bccf81fde190f9808c84a2b.webp" />
+        <meta property="og:release_date" content="2025-03-30T09:33:49" />
+    <meta property="og:updated_time" content="2025-03-30T09:33:49" />
+        <meta property="og:description" content="SpringCloud Gateway 简介  SpringCloud Gateway 简介   1. 定义 2. 处理流程 3. 路由 4. 熔断降级 5. 高级配置 补充说明：   java NI" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SpringCloud Gateway及相关概念简介">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="/assets/website/css/hysteria2/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/css/hysteria2/fontawesome-all.min.css" rel="stylesheet">
+    <link href="/assets/website/css/hysteria2/swiper.css" rel="stylesheet">
+    <link href="/assets/website/css/hysteria2/styles.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0LQ0YHE09L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0LQ0YHE09L');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbarExample" data-page="detail">
+        <!-- Navigation -->
+    <nav id="navbarExample" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
+        <div class="container">
+            <!-- Image Logo -->
+            <a class="navbar-brand logo-image" href="/">
+                            <span>Hysteria2</span>
+                        </a>
+            <!-- Text Logo - Use this if you don't have a graphic logo -->
+            <!-- <a class="navbar-brand logo-text" href="index.html">Zinc</a> -->
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/free-nodes/">免费节点</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/paid-subscribe/">推荐机场</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/client.htm">客户端</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link" href="/news/">新闻资讯</a>
+                    </li>
+                                    </ul>
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+    <!-- Header -->
+    <header class="ex-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <h1>SpringCloud Gateway及相关概念简介</h1>
+                    <div class="section-title">
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                    </div>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+    <!-- Details 1 -->
+    <div id="details" class="basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3>SpringCloud Gateway 简介</h3> <ul> <li><a href="#SpringCloud_Gateway__1" rel="nofollow">SpringCloud Gateway 简介</a></li> <li> <ul> <li><a href="#1__5" rel="nofollow">1. 定义</a></li> <li><a href="#2__19" rel="nofollow">2. 处理流程</a></li> <li><a href="#3__27" rel="nofollow">3. 路由</a></li> <li><a href="#4__39" rel="nofollow">4. 熔断降级</a></li> <li><a href="#5__51" rel="nofollow">5. 高级配置</a></li> <li><a href="#_81" rel="nofollow">补充说明：</a></li> <li> <ul> <li><a href="#java_NIO_83" rel="nofollow">java NIO</a></li> <li> <ul> <li><a href="#IO_89" rel="nofollow">IO的实现逻辑大体是什么样子的</a></li> <li><a href="#NIO_95" rel="nofollow">NIO给我们带来了些什么</a></li> </ul> </li> <li><a href="#_105" rel="nofollow">响应式编程</a></li> <li> <ul> <li><a href="#_109" rel="nofollow">定义</a></li> <li> <ul> <li><a href="#Reactive_Programming_111" rel="nofollow">Reactive Programming</a></li> <li><a href="#Reactive_Stream_119" rel="nofollow">Reactive Stream</a></li> <li><a href="#Reactor_130" rel="nofollow">Reactor</a></li> <li> <ul> <li><a href="#Flux_142" rel="nofollow">Flux</a></li> <li><a href="#Subscriber_162" rel="nofollow">Subscriber</a></li> </ul> </li> </ul> </li> </ul> </li> <li><a href="#WebFlux_193" rel="nofollow">WebFlux</a></li> <li><a href="#LUA_205" rel="nofollow">LUA脚本</a></li> </ul> </li> </ul> </li> </ul> </div> </h1> <p>参考文档:<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/crazymakercircle/p/11704077.html"  rel="nofollow">SpringCloud gateway</a></p> <h2><a id="1__5" rel="nofollow"></a>1. 定义</h2> <p>SpringCloud Gateway 作为 Spring Cloud 生态系统中的网关，目标是替代 Zuul，在Spring Cloud 2.0以上版本中，没有对新版本的Zuul 2.0以上最新高性能版本进行集成，仍然还是使用的Zuul 2.0之前的非Reactor模式的老版本。而为了提升网关的性能，SpringCloud Gateway是<em><strong>基于WebFlux框架</strong></em>实现的，而WebFlux框架底层则使用了高性能的Reactor模式通信框架Netty。</p> <p>Webflux模式替换了旧的Servlet线程模型。用少量的线程处理request和response io操作，这些线程称为Loop线程，而业务交给响应式编程框架处理，响应式编程是非常灵活的，用户可以将业务中阻塞的操作提交到响应式框架的work线程中执行，而不阻塞的操作依然可以在Loop线程中进行处理，大大提高了Loop线程的利用率。</p> <p>Spring Cloud Gateway 的目标，不仅提供统一的路由方式，并且基于 Filter 链的方式提供了网关基本的功能，例如：安全，监控/指标，和限流。主要特征如下：</p> <ul> <li>基于 Spring Framework 5，Project Reactor 和 Spring Boot 2.0</li> <li>集成 Hystrix 断路器</li> <li>集成 Spring Cloud DiscoveryClient</li> <li>Predicates 和 Filters 作用于特定路由，易于编写的 Predicates 和 Filters</li> <li>具备一些网关的高级功能：动态路由、限流、路径重写</li> </ul> <h2><a id="2__19" rel="nofollow"></a>2. 处理流程</h2> <p>客户端向 Spring Cloud Gateway 发出请求。然后在 Gateway Handler Mapping 中找到与请求相匹配的路由，将其发送到 Gateway Web Handler。Handler 再通过指定的过滤器链来将请求发送到我们实际的服务执行业务逻辑，然后返回。</p> <pre><code>Spring Cloud Gateway  -&gt; Gateway Handler Mapping  -&gt; Gateway Web Handler -&gt; filter(pre或者post)  -&gt; 目标请求</code></pre> <h2><a id="3__27" rel="nofollow"></a>3. 路由</h2> <table> <thead> <tr> <th>模块</th> <th>内容</th> <th></th> </tr> </thead> <tbody> <tr> <td>Route（路由）</td> <td>路由是网关的基本单元，由ID、URI、一组Predicate、一组Filter组成，根据Predicate进行匹配转发。</td> <td></td> </tr> <tr> <td>Predicate（谓语、断言）</td> <td>路由转发的判断条件，目前SpringCloud Gateway支持多种方式，常见如：Path、Query、Method、Header等，写法必须遵循 key=vlue的形式</td> <td></td> </tr> <tr> <td>Filter（过滤器）</td> <td>过滤器是路由转发请求时所经过的过滤逻辑，可用于修改请求、响应内容</td> <td></td> </tr> </tbody> </table> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/e27a29cf68da9088cb01e607f87ce144.jpg" alt="SpringCloud Gateway及相关概念简介"></p> <h2><a id="4__39" rel="nofollow"></a>4. 熔断降级</h2> <p>在分布式系统中，网关作为流量的入口，因此会有大量的请求进入网关，向其他服务发起调用，其他服务不可避免的会出现调用失败（超时、异常），失败时不能让请求堆积在网关上，需要快速失败并返回给客户端，想要实现这个要求，就必须在网关上做熔断、降级操作。</p> <p>如果请求发生故障的时候，这个请求会一直堆积在网关上，网关上堆积多了就会给网关乃至整个服务都造成巨大的压力，甚至整个服务宕掉。因此要对一些服务和页面进行有策略的降级，以此缓解服务器资源的的压力，以保证核心业务的正常运行，同时也保持了客户和大部分客户的得到正确的相应，所以需要网关上请求失败需要快速返回给客户端。</p> <p>当上游的请求，进入了Hystrix熔断降级机制时，就会调用fallbackUri配置的降级地址。需要注意的是，还需要单独设置Hystrix的commandKey的超时时间</p> <p>思考：如何判断是否需要进行熔断？</p> <p>个人理解：当有请求失败的时候，会直接返回预定义好的回复内容：包括两种，一种是失败的错误消息，一种是默认的数据（这种与真实的业务数据有格式相同，但是内容是固定的），目的只是为了快速响应请求，避免请求堆积网关。</p> <h2><a id="5__51" rel="nofollow"></a>5. 高级配置</h2> <ul> <li> <p>分布式限流</p> <p>从某种意义上讲，令牌桶算法是对漏桶算法的一种改进，桶算法能够限制请求调用的速率，而令牌桶算法能够在限制调用的平均速率的同时还允许一定程度的突发调用。在令牌桶算法中，存在一个桶，用来存放固定数量的令牌。算法中存在一种机制，以一定的速率往桶中放令牌。每次请求调用需要先获取令牌，只有拿到令牌，才有机会继续执行，否则选择选择等待可用的令牌、或者直接拒绝。放令牌这个动作是持续不断的进行，如果桶中令牌数达到上限，就丢弃令牌，所以就存在这种情况，桶中一直有大量的可用令牌，这时进来的请求就可以直接拿到令牌执行，比如设置qps为100，那么限流器初始化完成一秒后，桶中就已经有100个令牌了，这时服务还没完全启动好，等启动完成对外提供服务时，该限流器可以抵挡瞬时的100个请求。所以，只有桶中没有令牌时，请求才会进行等待，最后相当于以一定的速率执行。</p> <p>在Spring Cloud Gateway中，有Filter过滤器，因此可以在“pre”类型的Filter中自行实现上述三种过滤器。但是限流作为网关最基本的功能，Spring Cloud Gateway官方就提供了RequestRateLimiterGatewayFilterFactory这个类，适用在Redis内的通过执行Lua脚本实现了令牌桶的方式。</p> <p>在定义限流时，需要设置用于限流的键的解析器的 Bean 对象的名字。它使用 SpEL 表达式根据#{@beanName}从 Spring 容器中获取 Bean 对象。Bean对象可以通过设置uri、username、userId等作为限流条件</p> <p>问题： 针对不同用户，实现不同的限流措施？</p> </li> <li> <p>健康检查配置</p> <p>admin-client、actuator健康检查配置，为之后的功能提供支持</p> </li> <li> <p>统一配置跨域请求</p> <p>现在的请求通过经过gateWay网关时，需要在网关统一配置跨域请求，需求所有请求通过</p> </li> <li> <p>整合Sentinel完成流控和降级</p> <p>使用Sentinel作为gateWay的限流、降级、系统保护工具，由于sentinel的工作原理其实借助于全局的filter进行请求拦截并计算出是否进行限流、熔断等操作的</p> </li> </ul> <p>spring cloud gateway 与spring cloud 、nacos结合的部署架构，spring cloud gateway作为微服务单独进行部署</p> <hr/> <h2><a id="_81" rel="nofollow"></a>补充说明：</h2> <h3><a id="java_NIO_83" rel="nofollow"></a>java NIO</h3> <p>NIO（Non-blocking I/O，在Java领域，也称为New I/O），是一种同步非阻塞的I/O模型，也是I/O多路复用的基础，已经被越来越多地应用到大型应用服务器，成为解决高并发与大量连接、I/O处理问题的有效方式。</p> <p>参考文档：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://tech.meituan.com/2016/11/04/nio.html"  rel="nofollow">Java NIO浅析</a></p> <h4><a id="IO_89" rel="nofollow"></a>IO的实现逻辑大体是什么样子的</h4> <p>NIO的读写函数可以立刻返回，这就给了我们不开线程利用CPU的最好机会：如果一个连接不能读写（socket.read()返回0或者socket.write()返回0），我们可以把这件事记下来。因此只需要一个线程不断地轮询这些事件，一旦有就绪的时间，处理即可。不需要多线程。</p> <p>NIO由原来的阻塞读写（占用线程）变成了单线程轮询事件，找到可以进行读写的网络描述符进行读写。除了事件的轮询是阻塞的（没有可干的事情必须要阻塞），剩余的I/O操作都是纯CPU操作，没有必要开启多线程。</p> <h4><a id="NIO_95" rel="nofollow"></a>NIO给我们带来了些什么</h4> <ul> <li>事件驱动模型</li> <li>避免多线程</li> <li>单线程处理多任务</li> <li>非阻塞I/O，I/O读写不再阻塞，而是返回0</li> <li>基于block的传输，通常比基于流的传输更高效</li> <li>更高级的IO函数，zero-copy</li> <li>IO多路复用大大提高了Java网络应用的可伸缩性和实用性</li> </ul> <h3><a id="_105" rel="nofollow"></a>响应式编程</h3> <p>参考文档：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/yuanrw/p/10050509.html"  rel="nofollow">响应式编程</a>、<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/crazymakercircle/p/16127013.html"  rel="nofollow">Flux 和 Mono 、reactor实战 （史上最全）</a></p> <h4><a id="_109" rel="nofollow"></a>定义</h4> <h5><a id="Reactive_Programming_111" rel="nofollow"></a>Reactive Programming</h5> <p>响应式编程（Reactive Programming） ，这是微软为了应对 高并发环境下 的服务端编程，提出的一个实现 异步编程 的方案。响应式编程就是基于reactor的思想，当你做一个带有一定延迟的才能够返回的io操作时，不会阻塞，而是立刻返回一个流，并且订阅这个流，当这个流上产生了返回数据，可以立刻得到通知并调用回调函数处理数据。</p> <p>响应式编程基于reactor（Reactor 是一个运行在 Java8 之上的响应式框架）的思想，当你做一个带有一定延迟的才能够返回的io操作时，不会阻塞，而是立刻返回一个流，并且订阅这个流，当这个流上产生了返回数据，可以立刻得到通知并调用回调函数处理数据。</p> <p>响应式传播核心特点之一：变化传播：一个单元格变化之后，会像多米诺骨牌一样，导致直接和间接引用它的其他单元格均发生相应变化。</p> <h5><a id="Reactive_Stream_119" rel="nofollow"></a>Reactive Stream</h5> <p>响应式流（Reactive Stream） 就是反应式编程相关的规范，在 Java 平台上，由Netflix（开发了 RxJava）、TypeSafe（开发了 Scala、Akka）、Pivatol（开发了 Spring、Reactor）共同制定。</p> <p>它由以下几个组件组成：</p> <p>发布者：发布元素到订阅者<br /> 订阅者：消费元素<br /> 订阅：在发布者中，订阅被创建时，将与订阅者共享<br /> 处理器：发布者与订阅者之间处理数据</p> <h5><a id="Reactor_130" rel="nofollow"></a>Reactor</h5> <p>Reactor 是一个运行在 Java8 之上满足 Reactice 规范的响应式框架，它提供了一组响应式风格的 API。</p> <p>Reactor 框架是 Pivotal 基于 Reactive Programming 思想实现的。它符合 Reactive Streams 规范。它提供了Mono和Flux API 类型，两个核心类：<code>Flux&lt;T&gt;</code> 和<code>Mono&lt;T&gt;，两个核心类都实现 Publisher 接口，通过一组与 ReactiveX 运算符词汇表一致的丰富运算符来处理 0…1 （） 和 0…N （）的数据序列。是一个用于 JVM 的完全非阻塞的响应式编程框架，具备高效的需求管理，可以很好的处理 “backpressure”。 Reactor 就是 Spring WebFlux 的首选 反应式库。在上面的概念中，大家最重要是要记住</code>Flux<code>和</code>Mono<code>这两个</code>Reactor` 的核心类：</p> <ul> <li><strong>Mono</strong>：实现发布者 Publisher，并返回 0 或 1 个元素，最多只触发一个事件，所以可以把 Mono 用于在异步任务完成时发出通知。</li> <li><strong>Flux</strong>：实现发布者 Publisher，并返回 N 个元素，它可以触发零到多个事件，并根据实际情况结束处理或触发错误。</li> </ul> <p>Flux 和 Mono 都是数据流的发布者，使用 Flux 和 Mono 都可以发出三种数据信号：元素值，错误信号，完成信号；错误信号和完成信号都代表终止信号，终止信号用于告诉订阅者数据流结束了，错误信号终止数据流同时把错误信息传递给订阅者。</p> <h6><a id="Flux_142" rel="nofollow"></a>Flux</h6> <p>Reactor中的发布者（Publisher）由<strong>Flux</strong>和<strong>Mono</strong>两个类定义，它们都提供了丰富的操作符（operator）。一个Flux对象代表一个包含0…N个元素的响应式序列，元素可以是普通对象、数据库查询的结果、http响应体，甚至是异常。而一个Mono对象代表一个包含零/一个（0…1）元素的结果。</p> <pre><code class="prism language-java"><span class="token comment">//创建一个流，并直接往流上发布一个值为value数据</span><span class="token class-name">Flux</span><span class="token punctuation">.</span><span class="token function">just</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//通过list创建一个流，往流上依次发布list中的数据</span><span class="token class-name">Flux</span><span class="token punctuation">.</span><span class="token function">fromIterable</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//创建一个流，并向流上从i开始连续发布n个数据，数据类型为Integer</span><span class="token class-name">Flux</span><span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//创建一个流，并定时向流上发布一个数据，数据从0开始递增，数据类型为Long</span><span class="token class-name">Flux</span><span class="token punctuation">.</span><span class="token function">interval</span><span class="token punctuation">(</span><span class="token class-name">Duration</span><span class="token punctuation">.</span><span class="token function">ofSeconds</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <p>既然是“数据流”的发布者，Flux和Mono都可以发出三种“数据信号”：元素值、错误信号、完成信号，错误信号和完成信号都是终止信号，完成信号用于告知下游订阅者该数据流正常结束，错误信号终止数据流的同时将错误传递给下游订阅者。</p> <h6><a id="Subscriber_162" rel="nofollow"></a>Subscriber</h6> <p>subscriber是一个订阅者，他只有非常简单的4个接口</p> <pre><code class="prism language-java"><span class="token keyword">public</span><span class="token keyword">interface</span><span class="token class-name">Subscriber</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{<!-- --></span><span class="token keyword">void</span><span class="token function">onSubscribe</span><span class="token punctuation">(</span><span class="token class-name">Subscription</span> var1<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//收到下一个元素值信号时的行为</span><span class="token keyword">void</span><span class="token function">onNext</span><span class="token punctuation">(</span><span class="token class-name">T</span> var1<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//收到错误信号时的行为</span><span class="token keyword">void</span><span class="token function">onError</span><span class="token punctuation">(</span><span class="token class-name">Throwable</span> var1<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//收到终止信号时的行为</span><span class="token keyword">void</span><span class="token function">onComplete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <p>Subscriber必须要订阅一个Flux才能够接收通知：</p> <pre><code class="prism language-java">flux<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>     value<span class="token operator">-&gt;</span><span class="token function">handleData</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">,</span>     error<span class="token operator">-&gt;</span><span class="token function">handleError</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">handleComplete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <h3><a id="WebFlux_193" rel="nofollow"></a>WebFlux</h3> <p>参照资料:<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/zhang33565417/article/details/122012459"  rel="nofollow">WebFlux 详解</a></p> <p>Spring WebFlux 是一个异步非阻塞式 IO 模型，通过少量的容器线程就可以支撑大量的并发访问。底层使用的是 Netty 容器，这点也和传统的 SpringMVC 不一样，SpringMVC 是基于 Servlet 的。</p> <p>Spring Framework 中包含的原始 Web 框架 Spring Web MVC 是专门为 Servlet API 和 Servlet 容器构建的。反应式堆栈 Web 框架 Spring WebFlux 是在 5.0 版的后期添加的。它是完全非阻塞的，支持反应式流(Reactive Stream)背压，并在Netty，Undertow和Servlet 3.1 +容器等服务器上运行。</p> <ul> <li><code>WebFlux</code> 以<code>Reactor</code> 为基础，实现<code>Web</code> 领域的<strong>反应式编程框架</strong>。</li> <li><code>Reactor</code> 是基于<code>Reactive Streams</code> 一套<strong>反应式编程框架</strong>；</li> <li><code>Reactive Stream</code> 是一套反应式编程<strong>标准</strong> 和<strong>规范</strong>；</li> </ul> <h3><a id="LUA_205" rel="nofollow"></a>LUA脚本</h3> <p>参考资料：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/weixin_45525272/article/details/106589248"  rel="nofollow">Lua脚本语言</a></p> <p>Lua天生的定位就是做为一门"胶水语言"出现的.它没有自己独立的环境, 必须依附在宿主语言的环境中才能起作用.所以从一开始,Lua就非常清楚自己的定 位:它不想自己做大,而是做的够精简够小,嵌入在宿主语言中,帮忙提供一些动态 特性</p> <p><em><strong>轻量级</strong></em>— 轻量级Lua语言的官方版本只包括一个精简的核心和最基本的 库。这使得Lua体积小、启动速度快，从而适合嵌入在别的程序里。5.0.2版的Lua 的内核小于120KB，而Python的内核大约860KB，Perl的内核大约1.1MB。<br /><em><strong>可扩展</strong></em> —可扩展 Lua并不象其它许多"大而全"的语言那样，包括很多功 能，比如网络通讯、图形界面等。但是Lua提供了非常易于使用的扩展接口和机制：由宿主语言(通常是C或C++)提供这些功能，Lua可以使用它们，就像是本来就 内置的功能一样。<br /><em><strong>其它特性</strong></em>— 支持面向过程和面向对象；自动内存管理；</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-83881.htm">气动隔膜计量泵型号(气动隔膜计量泵的工作原理)</a></p>
+                                        <p>下一个：<a href="/news/article-84616.htm">动物疫苗的种类有哪些,各有什么特点和作用（动物疫苗种类及类型）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-68982.htm" title="厦门宠物收容中心地址 厦门宠物收容中心地址在哪里">厦门宠物收容中心地址 厦门宠物收容中心地址在哪里</a></li>
+                        <li class="py-2"><a href="/news/article-69629.htm" title="被猫咬了超过了48小时怎么办（被猫咬后过了48小时是不是没事）">被猫咬了超过了48小时怎么办（被猫咬后过了48小时是不是没事）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-2-free-ssr-node.htm" title="3月2日|最高速度23M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">3月2日|最高速度23M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-79698.htm" title="长沙宠物救助站地址（长沙宠物救助站地址在哪里）">长沙宠物救助站地址（长沙宠物救助站地址在哪里）</a></li>
+                        <li class="py-2"><a href="/news/article-72917.htm" title="宠物粮食店一年利润怎么样（宠物粮食店铺）">宠物粮食店一年利润怎么样（宠物粮食店铺）</a></li>
+                        <li class="py-2"><a href="/news/article-76953.htm" title="设计模式之：享元模式FlyweightPattern的实现">设计模式之：享元模式FlyweightPattern的实现</a></li>
+                        <li class="py-2"><a href="/news/article-76954.htm" title="动物疫苗间隔时间多久打第二针呢（动物疫苗多长时间内打）">动物疫苗间隔时间多久打第二针呢（动物疫苗多长时间内打）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-24-clash-windows.htm" title="3月24日|最高速度18.5M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">3月24日|最高速度18.5M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-82483.htm" title="纯手工宠物零食 纯手工宠物零食推荐">纯手工宠物零食 纯手工宠物零食推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-20-free-v2ray.htm" title="3月20日|最高速度19.2M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">3月20日|最高速度19.2M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of details 1 -->
+    
+        <!-- Copyright -->
+    <div class="copyright bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul class="list-unstyled li-space-lg p-small">
+                        <li><a href="#">Article Details</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div> <!-- end of col -->
+                <div class="col-lg-6">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                    <p>
+                        <a href="/">Hysteria2官网订阅站</a> 版权所有 Powered by WordPress
+                    </p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright -->
+    <!-- end of copyright -->
+    <!-- Back To Top Button -->
+    <button onclick="topFunction()" id="myBtn">
+        <img src="/assets/website/img/hysteria2/up-arrow.png" alt="alternative">
+    </button>
+    <!-- end of back to top button -->
+    <!-- Scripts -->
+    <script src="/assets/website/js/frontend/hysteria2/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/hysteria2/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="/assets/website/js/frontend/hysteria2/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="/assets/website/js/frontend/hysteria2/purecounter.min.js"></script> <!-- Purecounter counter for statistics numbers -->
+    <script src="/assets/website/js/frontend/hysteria2/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+    <script src="/assets/website/js/frontend/hysteria2/scripts.js"></script> <!-- Custom scripts -->
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
