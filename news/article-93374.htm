@@ -114,6 +114,7 @@
                   				  				  				<div id="content_views" class="htmledit_views"> <blockquote> <p>这个过程用到了<span style="color:#956fe7;">Vue+element-ui</span></p> <p>（1）首先给<span style="color:#956fe7;">el-input</span>加上<span style="color:#956fe7;">v-for</span>循环一个数据，并且<span style="color:#956fe7;">v-model</span>绑定这个数据中的属性，这样就可以在页面中展示所有的<span style="color:#956fe7;">input</span>框了，</p> <p>（2）动态绑定：先模拟一个传过来或者是请求到的数据，循环遍历这个数据，并把每个数据中的属性赋值给之前<span style="color:#956fe7;">el-input</span>循环的那个数据中的属性，这里推荐<span style="color:#956fe7;">for-of</span>循环。</p> <p>（3）动态添加：每点击一次就往<span style="color:#956fe7;">el-input</span>循环的那个数据中添加新的属性</p> </blockquote> <p><span style="color:#fe2c24;">具体操作如下：</span></p> <pre><code class="language-javascript">&lt;template&gt;   &lt;div class="input_test"&gt;     &lt;el-input       placeholder="请输入内容"       v-for="(item, index) in modules"       :key="index"       v-model="item.text"     &gt;&lt;/el-input&gt;     &lt;el-button type="success" @click="add"&gt;新增&lt;/el-button&gt;   &lt;/div&gt; &lt;/template&gt;  &lt;script&gt; export default {   data() {     return {       inputList: ["inputOne", "inputTwo", "inputThree"],//模拟一个传过来或者是请求到的数据       modules: [         {           text: "text",         },       ],     };   },   methods: {     add() {//动态添加input框       this.modules.push({ text: "text" });     },   },   watch: {},   computed: {},   components: {},   created() {},   mounted() {//动态绑定input框     for (const iterator of this.inputList) {       this.modules.push({ text: iterator });     }   }, }; &lt;/script&gt;  &lt;style lang="scss" scoped&gt;&lt;/style&gt;</code></pre> </div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-93370.htm">Spring Cloud入门-Config分布式配置中心(Hoxton版本)</a></p>
+                                        <p>下一个：<a href="/news/article-93941.htm">劳动节福利~ 我给大家写了个博客园快速发文工具_在线工具</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -123,16 +124,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-81743.htm" title="vue如何实现Toast轻提示_vue.js_">vue如何实现Toast轻提示_vue.js_</a></li>
-                        <li class="py-2"><a href="/news/article-82483.htm" title="纯手工宠物零食 纯手工宠物零食推荐">纯手工宠物零食 纯手工宠物零食推荐</a></li>
-                        <li class="py-2"><a href="/news/article-76953.htm" title="设计模式之：享元模式FlyweightPattern的实现">设计模式之：享元模式FlyweightPattern的实现</a></li>
-                        <li class="py-2"><a href="/news/article-71602.htm" title="动物疫苗接种禁忌症和注意事项图片视频 动物疫苗接种禁忌症和注意事项图片视频讲解">动物疫苗接种禁忌症和注意事项图片视频 动物疫苗接种禁忌症和注意事项图片视频讲解</a></li>
-                        <li class="py-2"><a href="/news/article-89670.htm" title="妙三多疫苗间隔多久打一针最好（妙三多疫苗间隔多久打一针最好呢）">妙三多疫苗间隔多久打一针最好（妙三多疫苗间隔多久打一针最好呢）</a></li>
-                        <li class="py-2"><a href="/news/article-72918.htm" title="生物疫苗和动物疫苗的区别是什么（生物疫苗一样吗）">生物疫苗和动物疫苗的区别是什么（生物疫苗一样吗）</a></li>
-                        <li class="py-2"><a href="/news/article-66422.htm" title="狗粮食品加工厂有哪些项目（狗粮加工企业）">狗粮食品加工厂有哪些项目（狗粮加工企业）</a></li>
-                        <li class="py-2"><a href="/news/article-91854.htm" title="打疫苗能吃动物内脏吗有影响吗（打完疫苗可以吃动物肝脏吗）">打疫苗能吃动物内脏吗有影响吗（打完疫苗可以吃动物肝脏吗）</a></li>
-                        <li class="py-2"><a href="/news/article-65769.htm" title="chrome浏览器隐藏滚动条">chrome浏览器隐藏滚动条</a></li>
-                        <li class="py-2"><a href="/news/article-77632.htm" title="win11系统文件夹打不开如何解决">win11系统文件夹打不开如何解决</a></li>
+                        <li class="py-2"><a href="/news/article-84616.htm" title="动物疫苗的种类有哪些,各有什么特点和作用（动物疫苗种类及类型）">动物疫苗的种类有哪些,各有什么特点和作用（动物疫苗种类及类型）</a></li>
+                        <li class="py-2"><a href="/news/article-76954.htm" title="动物疫苗间隔时间多久打第二针呢（动物疫苗多长时间内打）">动物疫苗间隔时间多久打第二针呢（动物疫苗多长时间内打）</a></li>
+                        <li class="py-2"><a href="/news/article-95651.htm" title="动物医院法定条件有哪些呢（动物医院归哪里管）">动物医院法定条件有哪些呢（动物医院归哪里管）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-2-free-shadowrocket-node.htm" title="4月2日|最高速度19.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">4月2日|最高速度19.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-8-free-node-subscribe-links.htm" title="4月8日|最高速度19.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">4月8日|最高速度19.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-3-free-ssr-node.htm" title="4月3日|最高速度20M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">4月3日|最高速度20M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-10-node-share-links.htm" title="4月10日|最高速度20.7M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">4月10日|最高速度20.7M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/news/article-75604.htm" title="python中repr()函数用法详解">python中repr()函数用法详解</a></li>
+                        <li class="py-2"><a href="/news/article-88187.htm" title="领养宠物需要给钱吗知乎（领养宠物要给红包吗）">领养宠物需要给钱吗知乎（领养宠物要给红包吗）</a></li>
+                        <li class="py-2"><a href="/news/article-73589.htm" title="使用vscode搭建javaweb项目">使用vscode搭建javaweb项目</a></li>
                     </ul>
     </div>
 </div>
@@ -144,7 +145,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+                <h4><span class="badge" style="float: right;">42</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
