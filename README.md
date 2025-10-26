@@ -1,4 +1,4 @@
-# 10月20日|最高速度19.2M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐  更新时间 2025-10-20 03:49:50
+# 10月26日|最高速度21M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐  更新时间 2025-10-26 09:52:28
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://hysteria2.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://hysteria2.github.io/uploads/2025/10/0-20251020.yaml
-- https://hysteria2.github.io/uploads/2025/10/1-20251020.yaml
-- https://hysteria2.github.io/uploads/2025/10/2-20251020.yaml
-- https://hysteria2.github.io/uploads/2025/10/3-20251020.yaml
-- https://hysteria2.github.io/uploads/2025/10/4-20251020.yaml
+- https://hysteria2.github.io/uploads/2025/10/0-20251026.yaml
+- https://hysteria2.github.io/uploads/2025/10/1-20251026.yaml
+- https://hysteria2.github.io/uploads/2025/10/2-20251026.yaml
+- https://hysteria2.github.io/uploads/2025/10/3-20251026.yaml
+- https://hysteria2.github.io/uploads/2025/10/4-20251026.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://hysteria2.github.io/uploads/2025/10/0-20251020.txt
-- https://hysteria2.github.io/uploads/2025/10/1-20251020.txt
-- https://hysteria2.github.io/uploads/2025/10/2-20251020.txt
-- https://hysteria2.github.io/uploads/2025/10/3-20251020.txt
-- https://hysteria2.github.io/uploads/2025/10/4-20251020.txt
+- https://hysteria2.github.io/uploads/2025/10/0-20251026.txt
+- https://hysteria2.github.io/uploads/2025/10/1-20251026.txt
+- https://hysteria2.github.io/uploads/2025/10/2-20251026.txt
+- https://hysteria2.github.io/uploads/2025/10/3-20251026.txt
+- https://hysteria2.github.io/uploads/2025/10/4-20251026.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://hysteria2.github.io/uploads/2025/10/20251020.json
+- https://hysteria2.github.io/uploads/2025/10/20251026.json
 
 ## 更多Clash节点订阅 ：
 
