@@ -312,24 +312,9 @@ A4：理论上多数Linux VPS均可，但建议选择性能稳定、网络质量
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VMess 配置 TLS+WebSocket 有哪些性能优势？</h5></div>
-    <div class="panel-body">
-        TLS+WebSocket 可伪装 HTTPS 流量，增强抗封锁能力，同时降低被封检测风险。结合策略组和节点延迟检测，可保证访问速度和连接稳定性，适合视频和游戏场景。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何判断节点是否支持 UDP 转发以便游戏加速？</h5></div>
-    <div class="panel-body">
-        可通过客户端的协议与节点说明确认是否支持 UDP（例如支持 UDP Relay 或 TUN/TAP 模式）。也可实际用 UDP 测试工具或直接用目标游戏连接进行延迟/丢包测试以验证是否可用。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Nekobox 是否可以与 Shadowsocks 客户端共存？</h5></div>
     <div class="panel-body">
         可以。Nekobox 配置独立，不影响其他客户端运行。用户可以同时使用 Shadowsocks、Clash 等客户端，通过策略组或分流规则选择合适节点，互不干扰。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekobox 能否同时管理多个客户端节点？</h5></div>
-    <div class="panel-body">
-        支持。Nekobox 与 Shadowsocks、Clash 等客户端独立运行，互不干扰。用户可通过策略组灵活管理节点，实现多客户端分流和网络优化，提高使用便利性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>如何识别节点是否被封锁或限速？</h5></div>
@@ -337,9 +322,24 @@ A4：理论上多数Linux VPS均可，但建议选择性能稳定、网络质量
         通过对比不同节点的 speedtest、ping、下载测速以及 traceroute 路由变化来判断；若多个节点同时异常可能是本地网络问题，单个节点异常则可能被封锁或运营商限速，应尝试更换端口或传输方式。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>如何配置 Sing-box 使用 DoH 加密 DNS？</h5></div>
+    <div class="panel-heading"><h5>V2RayN 如何开启系统代理？</h5></div>
     <div class="panel-body">
-        在 dns 模块中添加类型为 doh 的上游，如 `https://1.1.1.1/dns-query`，并指定 bootstrap 地址。启用加密 DNS 可防止 DNS 泄露并加快国际解析速度，提高整体隐私保护。<hr />    </div>
+        打开 V2RayN 后，点击右下角托盘图标，选择“设置系统代理”或“开启全局模式”。这样系统所有网络请求都会通过代理转发。适用于浏览器、下载器等需要全局代理的场景。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>如何判断节点是否支持 UDP 转发以便游戏加速？</h5></div>
+    <div class="panel-body">
+        可通过客户端的协议与节点说明确认是否支持 UDP（例如支持 UDP Relay 或 TUN/TAP 模式）。也可实际用 UDP 测试工具或直接用目标游戏连接进行延迟/丢包测试以验证是否可用。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VMess 配置 TLS+WebSocket 有哪些性能优势？</h5></div>
+    <div class="panel-body">
+        TLS+WebSocket 可伪装 HTTPS 流量，增强抗封锁能力，同时降低被封检测风险。结合策略组和节点延迟检测，可保证访问速度和连接稳定性，适合视频和游戏场景。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Nekobox 能否同时管理多个客户端节点？</h5></div>
+    <div class="panel-body">
+        支持。Nekobox 与 Shadowsocks、Clash 等客户端独立运行，互不干扰。用户可通过策略组灵活管理节点，实现多客户端分流和网络优化，提高使用便利性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>SSR 的端口复用有什么风险？</h5></div>
@@ -347,9 +347,9 @@ A4：理论上多数Linux VPS均可，但建议选择性能稳定、网络质量
         SSR 支持多端口配置以复用服务，但若端口过多或设置冲突，可能被扫描工具识别或误判为异常服务。建议保持配置简洁，并合理分配端口范围以减少暴露风险。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2RayN 如何开启系统代理？</h5></div>
+    <div class="panel-heading"><h5>如何配置 Sing-box 使用 DoH 加密 DNS？</h5></div>
     <div class="panel-body">
-        打开 V2RayN 后，点击右下角托盘图标，选择“设置系统代理”或“开启全局模式”。这样系统所有网络请求都会通过代理转发。适用于浏览器、下载器等需要全局代理的场景。<hr />    </div>
+        在 dns 模块中添加类型为 doh 的上游，如 `https://1.1.1.1/dns-query`，并指定 bootstrap 地址。启用加密 DNS 可防止 DNS 泄露并加快国际解析速度，提高整体隐私保护。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Nekoray 节点订阅如何实现自动更新？</h5></div>
@@ -388,16 +388,16 @@ A4：理论上多数Linux VPS均可，但建议选择性能稳定、网络质量
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-11-6-clash-node-daily-updates.htm" title="11月6日|最高速度18.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">11月6日|最高速度18.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-11-clash-node.htm" title="11月11日|最高速度18.2M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">11月11日|最高速度18.2M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-15-clash-node-daily-updates.htm" title="11月15日|最高速度21M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">11月15日|最高速度21M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-7-free-clash.htm" title="10月7日|最高速度23M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月7日|最高速度23M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-3-free-high-speed-nodes.htm" title="11月3日|最高速度18.7M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">11月3日|最高速度18.7M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-17-clash-node-daily-updates.htm" title="11月17日|最高速度18.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">11月17日|最高速度18.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-16-free-ssr-node.htm" title="10月16日|最高速度20.4M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月16日|最高速度20.4M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-4-free-node-subscribe-links.htm" title="12月4日|最高速度22.6M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">12月4日|最高速度22.6M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-12-clash-node-daily-updates.htm" title="10月12日|最高速度20.1M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月12日|最高速度20.1M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-13-free-clash.htm" title="10月13日|最高速度21.2M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月13日|最高速度21.2M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-10-24-clash-node.htm" title="10月24日|最高速度19.6M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月24日|最高速度19.6M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-5-free-ssr-node.htm" title="11月5日|最高速度22.7M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">11月5日|最高速度22.7M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-20-node-share-links.htm" title="10月20日|最高速度19.5M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月20日|最高速度19.5M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-8-free-shadowrocket-node.htm" title="11月8日|最高速度20.2M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">11月8日|最高速度20.2M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-11-free-ssr-subscribe.htm" title="10月11日|最高速度19.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月11日|最高速度19.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-20-free-high-speed-nodes.htm" title="11月20日|最高速度20.7M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">11月20日|最高速度20.7M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-2-free-v2ray.htm" title="12月2日|最高速度22.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">12月2日|最高速度22.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-10-27-free-clash-subscribe.htm" title="10月27日|最高速度21.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月27日|最高速度21.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></li>
                     </ul>
     </div>
 </div>
@@ -409,7 +409,10 @@ A4：理论上多数Linux VPS均可，但建议选择性能稳定、网络质量
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>
