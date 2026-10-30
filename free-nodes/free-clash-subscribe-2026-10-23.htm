@@ -290,27 +290,13 @@ A4：保护好UUID及服务器信息，不随意分享配置文件，使用官�
 <div class="clearfix"></div>
 <div class="col-md-12 mt-5">
         <p>上一个：<a href="/free-nodes/2026-10-22-clash-v2ray-ss-ssr.htm">10月22日|最高速度20M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></p>
+        <p>下一个：<a href="/free-nodes/2026-10-24-free-clash.htm">10月24日|最高速度21.6M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a></p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 的 PAC 模式有什么优势？</h5></div>
+    <div class="panel-heading"><h5>如何判断节点是否支持 UDP 转发以便游戏加速？</h5></div>
     <div class="panel-body">
-        PAC 模式可根据规则动态判断流量是否走代理，无需手动切换节点。适合国内外混合访问环境，提高网络访问速度和稳定性，同时减少误操作导致的访问失败。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何按端口分流不同流量？</h5></div>
-    <div class="panel-body">
-        Sing-box 支持按端口匹配流量，将不同应用分配到指定节点。结合策略组使用，可实现精准分流，提高访问速度和网络稳定性，优化整体网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Netch 无法代理游戏怎么办？</h5></div>
-    <div class="panel-body">
-        若 Netch 无法代理游戏，需检查游戏进程是否被正确捕获，以及防火墙是否阻止了 TUN 模式。可尝试以管理员身份运行程序，或切换为 Socks 模式重新导入节点。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Quantumult X 的分流规则如何设置？</h5></div>
-    <div class="panel-body">
-        Quantumult X 通过规则分组来控制流量走向。用户可自定义策略组，将特定网站流量指向不同节点。编辑规则文件时，可利用 GEOIP、DOMAIN-SUFFIX 等指令精确管理网络行为。<hr />    </div>
+        可通过客户端的协议与节点说明确认是否支持 UDP（例如支持 UDP Relay 或 TUN/TAP 模式）。也可实际用 UDP 测试工具或直接用目标游戏连接进行延迟/丢包测试以验证是否可用。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray 的传输协议选择对性能有何影响？</h5></div>
@@ -318,9 +304,9 @@ A4：保护好UUID及服务器信息，不随意分享配置文件，使用官�
         V2Ray 支持 TCP、WebSocket、gRPC、QUIC 等多种传输协议。不同协议在延迟、抗封锁和吞吐量上差异明显。用户可根据网络环境选择最优协议，以获得稳定且高速的连接体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>如何判断节点是否支持 UDP 转发以便游戏加速？</h5></div>
+    <div class="panel-heading"><h5>Potatso Lite 是否可以手动管理多个节点？</h5></div>
     <div class="panel-body">
-        可通过客户端的协议与节点说明确认是否支持 UDP（例如支持 UDP Relay 或 TUN/TAP 模式）。也可实际用 UDP 测试工具或直接用目标游戏连接进行延迟/丢包测试以验证是否可用。<hr />    </div>
+        支持。用户可以手动输入节点参数或扫描二维码导入节点，并可进行修改或删除。虽然不支持订阅自动更新，但足够满足轻量用户对节点管理和分流的基本需求。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Nekobox 如何设置分流规则？</h5></div>
@@ -328,9 +314,14 @@ A4：保护好UUID及服务器信息，不随意分享配置文件，使用官�
         Nekobox 提供图形化规则编辑界面，可基于 IP、域名、地区等条件创建分流规则。例如可设置国内直连、国外代理、特定网站走特定节点，操作直观。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 是否可以手动管理多个节点？</h5></div>
+    <div class="panel-heading"><h5>Quantumult X 的分流规则如何设置？</h5></div>
     <div class="panel-body">
-        支持。用户可以手动输入节点参数或扫描二维码导入节点，并可进行修改或删除。虽然不支持订阅自动更新，但足够满足轻量用户对节点管理和分流的基本需求。<hr />    </div>
+        Quantumult X 通过规则分组来控制流量走向。用户可自定义策略组，将特定网站流量指向不同节点。编辑规则文件时，可利用 GEOIP、DOMAIN-SUFFIX 等指令精确管理网络行为。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 的多用户限速功能如何使用？</h5></div>
+    <div class="panel-body">
+        Hiddify Next 支持在管理面板中为每个用户设置带宽上限。管理员可以按需分配速率或流量配额，防止单一用户占用过多资源，从而保持整体网络稳定。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>VMess 的 WebSocket + TLS 配置有哪些好处？</h5></div>
@@ -338,9 +329,19 @@ A4：保护好UUID及服务器信息，不随意分享配置文件，使用官�
         WebSocket + TLS 可伪装为普通 HTTPS 流量，增强抗封锁能力和隐蔽性。结合域名伪装和策略组使用，可以在高封锁网络中保持稳定、高速和安全的网络访问体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 的多用户限速功能如何使用？</h5></div>
+    <div class="panel-heading"><h5>Netch 无法代理游戏怎么办？</h5></div>
     <div class="panel-body">
-        Hiddify Next 支持在管理面板中为每个用户设置带宽上限。管理员可以按需分配速率或流量配额，防止单一用户占用过多资源，从而保持整体网络稳定。    </div>
+        若 Netch 无法代理游戏，需检查游戏进程是否被正确捕获，以及防火墙是否阻止了 TUN 模式。可尝试以管理员身份运行程序，或切换为 Socks 模式重新导入节点。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 如何按端口分流不同流量？</h5></div>
+    <div class="panel-body">
+        Sing-box 支持按端口匹配流量，将不同应用分配到指定节点。结合策略组使用，可实现精准分流，提高访问速度和网络稳定性，优化整体网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 的 PAC 模式有什么优势？</h5></div>
+    <div class="panel-body">
+        PAC 模式可根据规则动态判断流量是否走代理，无需手动切换节点。适合国内外混合访问环境，提高网络访问速度和稳定性，同时减少误操作导致的访问失败。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -370,11 +371,11 @@ A4：保护好UUID及服务器信息，不随意分享配置文件，使用官�
     <div class="panel-body">
         <div class="row">
             <div class="text-center">
-                <a href="javascript:;" class="js_to" data-url="https://c.kilxs.cn/?path=register&code=" data-type="Xingchen" data-code="tlc6gYYx" target="_blank">
+                <a href="javascript:;" class="js_to" data-url="https://xc1.luniu8.com/?code=" data-type="Xingchen" data-code="tlc6gYYx" target="_blank">
                     <img src="/assets/website/img/G/xingchen.webp" class="avatar" alt="星辰机场">
                 </a>
                 <dl>
-                    <dt><a href="javascript:;" class="js_to" data-url="https://c.kilxs.cn/?path=register&code=" data-type="Xingchen" data-code="tlc6gYYx" target="_blank">星辰机场</a></dt>
+                    <dt><a href="javascript:;" class="js_to" data-url="https://xc1.luniu8.com/?code=" data-type="Xingchen" data-code="tlc6gYYx" target="_blank">星辰机场</a></dt>
                     <dd>
                         <p>【包年送2个月】</p><p>1、购买入门版年付套餐额外送2个月，共14个月，只要99元！！！</p><p>2、购买“至尊天皇”年付套餐，额外送2个月，只要299元！！！</p><p>3、购买其他包月类套餐中的年付，同样送2个月！！！</p><p>错过要再等一年！！</p>                    </dd>
                 </dl>
@@ -388,16 +389,16 @@ A4：保护好UUID及服务器信息，不随意分享配置文件，使用官�
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-9-9.htm" title="9月9日|最高速度22M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">9月9日|最高速度22M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-10-9.htm" title="10月9日|最高速度18.1M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月9日|最高速度18.1M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-10-23.htm" title="10月23日|最高速度21.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月23日|最高速度21.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-6-free-v2ray.htm" title="10月6日|最高速度22.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月6日|最高速度22.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-10-21.htm" title="10月21日|最高速度18M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月21日|最高速度18M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-9-3.htm" title="9月3日|最高速度20.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">9月3日|最高速度20.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-4-free-ssr-subscribe.htm" title="10月4日|最高速度21.4M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月4日|最高速度21.4M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-2-free-node-subscribe.htm" title="10月2日|最高速度21.2M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月2日|最高速度21.2M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/clash-windows-2026-9-29.htm" title="9月29日|最高速度21.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">9月29日|最高速度21.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-6-free-clash.htm" title="9月6日|最高速度21.4M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">9月6日|最高速度21.4M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-10-17.htm" title="10月17日|最高速度21.2M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月17日|最高速度21.2M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-25.htm" title="9月25日|最高速度19.3M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">9月25日|最高速度19.3M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-10-free-clash.htm" title="10月10日|最高速度18.2M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月10日|最高速度18.2M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-27.htm" title="9月27日|最高速度22.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">9月27日|最高速度22.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-v2ray-subscribe-2026-9-23.htm" title="9月23日|最高速度22.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">9月23日|最高速度22.9M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-20-free-node-subscribe.htm" title="9月20日|最高速度18.6M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">9月20日|最高速度18.6M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-20-free-ssr-subscribe.htm" title="10月20日|最高速度22.5M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月20日|最高速度22.5M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-30-clash-node-daily-updates.htm" title="10月30日|最高速度18.3M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">10月30日|最高速度18.3M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-8-free-node-subscribe.htm" title="9月8日|最高速度18.1M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">9月8日|最高速度18.1M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-15.htm" title="9月15日|最高速度21.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐">9月15日|最高速度21.8M/S，2025最新Hysteria2免费节点高速订阅链接，便宜机场推荐</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -409,7 +410,7 @@ A4：保护好UUID及服务器信息，不随意分享配置文件，使用官�
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">22</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
@@ -448,7 +449,7 @@ A4：保护好UUID及服务器信息，不随意分享配置文件，使用官�
                         <a href="/privacy.htm">隐私申明</a> |
                         <a href="/sitemap.xml">网站地图</a>
                     </p>
-                                        <div>特别推荐：<b><a href="javascript:;" class="js_to" data-url="https://c.kilxs.cn/?path=register&code=" data-type="Xingchen" data-code="tlc6gYYx" target="_blank">星辰机场</a></b> <p>【包年送2个月】</p><p>1、购买入门版年付套餐额外送2个月，共14个月，只要99元！！！</p><p>2、购买“至尊天皇”年付套餐，额外送2个月，只要299元！！！</p><p>3、购买其他包月类套餐中的年付，同样送2个月！！！</p><p>错过要再等一年！！</p></div>
+                                        <div>特别推荐：<b><a href="javascript:;" class="js_to" data-url="https://xc1.luniu8.com/?code=" data-type="Xingchen" data-code="tlc6gYYx" target="_blank">星辰机场</a></b> <p>【包年送2个月】</p><p>1、购买入门版年付套餐额外送2个月，共14个月，只要99元！！！</p><p>2、购买“至尊天皇”年付套餐，额外送2个月，只要299元！！！</p><p>3、购买其他包月类套餐中的年付，同样送2个月！！！</p><p>错过要再等一年！！</p></div>
                                         <p>
                         <a href="/">Hysteria2官网订阅站</a> 版权所有 Powered by WordPress
                     </p>
